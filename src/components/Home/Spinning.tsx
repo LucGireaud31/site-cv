@@ -1,0 +1,30 @@
+import { Box, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+
+interface SpinningProps {}
+
+const keyWords = [
+  "Applications mobile",
+  "Sites web",
+  "Freelance",
+  "Développeur front & back",
+  "Projets 100% personnalisés",
+  "Node",
+];
+
+export function Spinning(props: SpinningProps) {
+  const {} = props;
+
+  return (
+    <Flex h="80px" bg="theme.500">
+      <Box w="250px" bgGradient="linear(to-r, theme.300, theme.500)" />
+      <HStack spacing={20} w="fit-content" mx="auto">
+        {keyWords.map((word, i) => (
+          <Heading key={i} color="white" size="md">
+            {word}
+          </Heading>
+        ))}
+      </HStack>
+      <Box w="250px" bgGradient="linear(to-l, theme.300, theme.500)" />
+    </Flex>
+  );
+}

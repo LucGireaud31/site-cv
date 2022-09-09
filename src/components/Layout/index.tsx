@@ -1,11 +1,11 @@
 import { Box, Container, Flex, Image, HStack } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { darkTheme, lightTheme, theme } from "../../theme/colors";
+import { colors } from "../../theme/colors";
 import { LinkItem } from "./LinkItem";
 
 export function Layout() {
   return (
-    <Box bg={lightTheme} color={theme} w="full" h="100vh">
+    <Box bg="theme.300" color="theme.500" w="full">
       <Container maxW="8xl" pt={8} mb={6}>
         <Flex alignItems="center" justifyContent="space-between">
           <Image src="/images/logo.png" w={50} h={50} />
@@ -23,18 +23,18 @@ export function Layout() {
               ml={15}
               cursor="pointer"
               _hover={{
-                color: lightTheme,
-                bg: theme,
+                color: "theme.300",
+                bg: "theme.500",
               }}
               _active={{
-                bg: darkTheme,
+                bg: "darkTheme.700",
               }}
             >
               Mon CV
             </Box>
           </Flex>
         </Flex>
-        <Box w="full" h="1px" bg={`${theme}50`} mt={6} />
+        <Box w="full" h="1px" bg={`${colors.theme["500"]}50`} mt={6} />
       </Container>
       <Outlet />
     </Box>
