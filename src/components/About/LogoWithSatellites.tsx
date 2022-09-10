@@ -1,76 +1,70 @@
-import { Box, Center, Text, Image, background } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { colors } from "../../theme/colors";
-import { sleep } from "../../utils/promise";
+import { Box, Image, Flex } from "@chakra-ui/react";
+import { useEffect, useRef } from "react";
 
 const emojis = ["😎", "☕", "🤠"];
 
-const pi2 = 2 * Math.PI;
-
-const defaultI = 0;
-const defaultJ = pi2 / 3;
-const defaultK = (2 * pi2) / 3;
-
 export function LogoWithSatellites() {
-  const [left, setLeft] = useState([0, 0, 0]);
-  const [top, setTop] = useState([0, 0, 0]);
+  const ref0 = useRef<HTMLDivElement>(null);
+  const ref1 = useRef<HTMLDivElement>(null);
+  const ref2 = useRef<HTMLDivElement>(null);
+  const ref3 = useRef<HTMLDivElement>(null);
+
+  const refs = [ref1, ref2, ref3];
 
   useEffect(() => {
-    (async () => {
-      let i = 0;
-      let j = defaultJ;
-      let k = defaultK;
-      const speed = 0.01;
-
-      while (true) {
-        await sleep(50);
-        const left1 = 100 * Math.cos(i) + 83;
-        const top1 = 100 * Math.sin(i) + 83;
-        const left2 = 100 * Math.cos(j) + 83;
-        const top2 = 100 * Math.sin(j) + 83;
-        const left3 = 100 * Math.cos(k) + 83;
-        const top3 = 100 * Math.sin(k) + 83;
-        setLeft([left1, left2, left3]);
-        setTop([top1, top2, top3]);
-
-        i = i > pi2 + defaultI ? defaultI : i + speed;
-        j = j > pi2 + defaultJ ? defaultJ : j + speed;
-        k = k > pi2 + defaultK ? defaultK : k + speed;
-      }
-    })();
-  }, []);
+    console.log(ref0.current?.style.rotate, ref0.current?.style.offsetRotate);
+  }, [ref0]);
 
   return (
-    <Center
-      px={15}
-      rounded="full"
-      border="2px solid"
-      borderColor="theme.400"
-      py={6}
-      position="relative"
-      w="200px"
-      h="200px"
-    >
-      <Image src="/images/react.png" h="140px" />
-      {emojis.map((emoji, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            display: "flex",
-            top: `${top[i]}px`,
-            left: `${left[i]}px`,
-            backgroundColor: colors.theme[400],
-            width: "32px",
-            height: "32px",
-            borderRadius: "16px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {emoji}
-        </div>
-      ))}
-    </Center>
+    <Box position="relative">
+      <Box
+        ref={ref0}
+        px={15}
+        rounded="full"
+        border="2px solid"
+        borderColor="theme.400"
+        py={6}
+        position="relative"
+        w="200px"
+        h="200px"
+        sx={{
+          "@keyframes rotation": {
+            from: {
+              transform: "rotate(0deg)",
+            },
+            to: {
+              transform: "rotate(359deg)",
+            },
+          },
+        }}
+        animation="rotation 10s infinite linear"
+      >
+        {emojis.map((emoji, i) => (
+          <Flex
+            ref={refs[i]}
+            key={i}
+            position="fixed"
+            top={`${Math.cos((i * 2 * Math.PI) / 3) * 98 + 82}px`}
+            left={`${Math.sin((i * 2 * Math.PI) / 3) * 98 + 82}px`}
+            bg="theme.400"
+            w="32px"
+            h="32px"
+            rounded="full"
+            justifyContent="center"
+            alignItems="center"
+            animation="rotation 10s infinite linear reverse"
+          >
+            {emoji}
+          </Flex>
+        ))}
+      </Box>
+      <Image
+        src="/images/react.png"
+        w="150px"
+        position="absolute"
+        top="35px"
+        left="25px"
+      />
+    </Box>
   );
 }
