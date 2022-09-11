@@ -1,10 +1,12 @@
-import { Box, Text, Image, Center } from "@chakra-ui/react";
+import { Box, Text, Image, Center, useToast, Link } from "@chakra-ui/react";
 import { colors } from "../../theme/colors";
 
 interface ProfilPictureProps {}
 
 export function ProfilPicture(props: ProfilPictureProps) {
   const {} = props;
+
+  const toast = useToast();
 
   return (
     <Box position="relative">
@@ -43,27 +45,46 @@ export function ProfilPicture(props: ProfilPictureProps) {
         top={10}
         left={40}
         zIndex={5}
+        cursor="pointer"
+        onClick={() => {
+          navigator.clipboard.writeText("lucgireaud@gmail.com").then(() =>
+            toast({
+              title: "Mail copié ",
+              status: "success",
+              duration: 3000,
+              position: "top",
+            })
+          );
+        }}
       >
-        <Image src="/images/google.png" w={25} />
+        <Image src="/images/gmail.png" w={25} />
       </Center>
-      <Image
-        src="/images/linked_in.png"
+      <Link
         right={40}
+        zIndex={5}
         top={10}
         position="absolute"
-        w="40px"
-        h="40px"
-      />
-      <Image
-        src="/images/facebook.png"
+        href="https://www.linkedin.com/in/luc-gireaud-09b04b245"
+        target="_blank"
+      >
+        <Image src="/images/linked_in.png" w="40px" h="40px" />
+      </Link>
+      <Link
         top={250}
         right="95px"
         position="absolute"
-        w="40px"
-        h="40px"
-        rounded="full"
+        target="_blank"
         zIndex={5}
-      />
+        href="https://www.facebook.com/luc.gireaud.v3"
+      >
+        <Image
+          src="/images/facebook.png"
+          w="40px"
+          h="40px"
+          rounded="full"
+          zIndex={5}
+        />
+      </Link>
     </Box>
   );
 }

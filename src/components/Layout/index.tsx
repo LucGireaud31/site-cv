@@ -21,6 +21,9 @@ export function Layout() {
               <LinkItem label="Mes projets" href="#projects" to="projects" />
             </HStack>
             <Box
+              as="a"
+              href="/documents/cv.pdf"
+              target="_blank"
               border="2px solid"
               borderColor="theme.500"
               fontWeight="bold"

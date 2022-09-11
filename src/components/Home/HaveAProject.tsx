@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Text } from "@chakra-ui/react";
 
 export function HaveAProject() {
   return (
@@ -8,13 +8,14 @@ export function HaveAProject() {
           Vous avez un projet ?
         </Text>
       </Box>
-      <Text
+      <Link
+        href="mailto:luc.gireaud@gmail.com"
         color="theme.500"
         w={52}
         py={4}
         px={8}
         fontWeight="bold"
-        align="center"
+        textAlign="center"
         cursor="pointer"
         _hover={{
           bg: "theme.400",
@@ -22,7 +23,7 @@ export function HaveAProject() {
         }}
       >
         Contactez-moi
-      </Text>
+      </Link>
     </Flex>
   );
 }
