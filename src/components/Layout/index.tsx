@@ -1,12 +1,16 @@
 import { Box, Container, Flex, Image, HStack } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { colors } from "../../theme/colors";
 import { LinkItem } from "./LinkItem";
 
 export function Layout() {
   return (
-    <Box bg="theme.300" color="theme.500" w="full" id="header">
+    <Box
+      bgGradient={`linear(to-b,theme.500, theme.300 0.4%)`}
+      color="theme.500"
+      w="full"
+      id="header"
+    >
       <Container maxW="8xl" pt={8} mb={6}>
         <Flex alignItems="center" justifyContent="space-between">
           <Image src="/images/logo.png" w={50} h={50} />
@@ -18,17 +22,15 @@ export function Layout() {
             </HStack>
             <Box
               border="2px solid"
+              borderColor="theme.500"
               fontWeight="bold"
               py={2}
               px={10}
               ml={15}
               cursor="pointer"
               _hover={{
-                color: "theme.300",
-                bg: "theme.500",
-              }}
-              _active={{
-                bg: "darkTheme.700",
+                color: "white",
+                bg: "theme.400",
               }}
             >
               Mon CV
