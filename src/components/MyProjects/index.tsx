@@ -20,21 +20,16 @@ export function MyProjects(props: MyProjectsProps) {
 
   return (
     <Container maxW="8xl" pb="100px">
-      <Center pt={50} id="projects">
-        <Heading
-          color="white"
-          bg="theme.500"
-          w="fit-content"
-          py={2}
-          px={8}
-          rounded="full"
-        >
-          Mes projets
-        </Heading>
-      </Center>
+      <Heading textAlign="center" pt={50} id="projects">
+        Mes projets
+      </Heading>
 
       <VStack mt="150px" spacing="100px">
-        <Project title="Apsio SSI" image="images/apsio-ssi.png">
+        <Project
+          title="Apsio SSI"
+          image="images/apsio-ssi.png"
+          hrefGit="https://github.com/LucGireaud31/apsio-ssi"
+        >
           <Text>
             Une application qui permet de garder en mémoire les informations
             personnelles de l’utilisateur et de les partager rapidemment.
@@ -49,6 +44,7 @@ export function MyProjects(props: MyProjectsProps) {
           title="Apsio Coin Manager"
           image="images/apsio_coin.png"
           reversed
+          hrefGit="https://github.com/LucGireaud31/apsio-coin-manager"
         >
           <Text as="p">
             Application web à destination des utilisateurs de la blockchain{" "}

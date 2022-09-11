@@ -17,8 +17,8 @@ export function Layout() {
           <Flex justifyContent="space-between">
             <HStack spacing={8} mr={50}>
               <LinkItem label="Accueil" href="/" to="header" />
-              <LinkItem label="A propos" href="#about" to="about" />
               <LinkItem label="Mes projets" href="#projects" to="projects" />
+              <LinkItem label="A propos" href="#about" to="about" />
             </HStack>
             <Box
               as="a"

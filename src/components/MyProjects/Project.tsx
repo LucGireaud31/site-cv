@@ -13,18 +13,21 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  HStack,
 } from "@chakra-ui/react";
 import { ReactNode, useMemo } from "react";
+import { GitHubLink } from "./GitHubLink";
 
 interface ProjectProps {
   image: string;
   title: string;
   children: ReactNode;
   reversed?: boolean;
+  hrefGit: string;
 }
 
 export function Project(props: ProjectProps) {
-  const { image, title, children, reversed } = props;
+  const { image, title, children, reversed, hrefGit } = props;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -43,9 +46,12 @@ export function Project(props: ProjectProps) {
           textAlign="center"
           mx={20}
         >
-          <Heading size="lg" color="black">
-            {title}
-          </Heading>
+          <Flex justifyContent="center">
+            <Heading size="lg" color="black">
+              {title}
+            </Heading>
+            <GitHubLink href={hrefGit} />
+          </Flex>
           <VStack mt={10} color="gray.500" fontWeight="semibold" spacing={5}>
             {children}
           </VStack>
