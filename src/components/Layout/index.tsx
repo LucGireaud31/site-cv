@@ -1,19 +1,20 @@
 import { Box, Container, Flex, Image, HStack } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { colors } from "../../theme/colors";
 import { LinkItem } from "./LinkItem";
 
 export function Layout() {
   return (
-    <Box bg="theme.300" color="theme.500" w="full">
+    <Box bg="theme.300" color="theme.500" w="full" id="header">
       <Container maxW="8xl" pt={8} mb={6}>
         <Flex alignItems="center" justifyContent="space-between">
           <Image src="/images/logo.png" w={50} h={50} />
           <Flex justifyContent="space-between">
             <HStack spacing={8} mr={50}>
-              <LinkItem label="Accueil" href="/" />
-              <LinkItem label="A propos" href="/#about" />
-              <LinkItem label="Mes projets" href="/projects" />
+              <LinkItem label="Accueil" href="/" to="header" />
+              <LinkItem label="A propos" href="#about" to="about" />
+              <LinkItem label="Mes projets" href="#projects" to="projects" />
             </HStack>
             <Box
               border="2px solid"

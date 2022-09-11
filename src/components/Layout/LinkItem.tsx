@@ -1,15 +1,21 @@
-import { Link } from "@chakra-ui/react";
+import { Link } from "react-scroll";
 
 interface LinkItemProps {
   label: string;
   href: string;
+  to?: string;
 }
 
 export function LinkItem(props: LinkItemProps) {
-  const { label, href } = props;
+  const { label, href, to } = props;
 
   return (
-    <Link href={href} fontWeight="bold" _hover={{ textDecoration: "none" }}>
+    <Link
+      to={to ?? ""}
+      href={href}
+      style={{ fontWeight: "bold" }}
+      smooth={true}
+    >
       {label}
     </Link>
   );

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { About } from "../About";
 import { Card } from "../About/Card";
+import { MyProjects } from "../MyProjects";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
 import { Spinning } from "./Spinning";
@@ -45,6 +46,7 @@ export function Home(props: HomeProps) {
       </Container>
       <Spinning />
       <About />
+      <MyProjects />
     </>
   );
 }

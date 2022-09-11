@@ -15,8 +15,8 @@ export function About(props: AboutProps) {
   const {} = props;
 
   return (
-    <Container maxW="8xl" h="100vh">
-      <Heading textAlign="center" mt={50}>
+    <Container maxW="8xl" h="80vh">
+      <Heading textAlign="center" pt={50} id="about">
         A propos
       </Heading>
       <VStack mt="70px" spacing="100px">
