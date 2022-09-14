@@ -41,7 +41,7 @@ export function MyProjects(props: MyProjectsProps) {
               Pour <Highlight>partager les données</Highlight>, il est possible
               de générer un Qr Code qui sera scanné par le destinataire.
             </Text>
-            <PlayStoreLink href="" />
+            <PlayStoreLink href="https://play.google.com/store/apps/details?id=com.luc.gireaud.apsiossi&gl=FR" />
           </Project>
           <Project
             title="Apsio Coin Manager"
