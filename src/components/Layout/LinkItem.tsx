@@ -1,21 +1,15 @@
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 interface LinkItemProps {
   label: string;
-  href: string;
-  to?: string;
+  to: string;
 }
 
 export function LinkItem(props: LinkItemProps) {
-  const { label, href, to } = props;
+  const { label, to } = props;
 
   return (
-    <Link
-      to={to ?? ""}
-      href={href}
-      style={{ fontWeight: "bold" }}
-      smooth={true}
-    >
+    <Link to={to} style={{ fontWeight: "bold" }}>
       {label}
     </Link>
   );

@@ -8,7 +8,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Card3D } from "../3D/Cards";
 import { Highlight } from "../shared/Highlight";
 import { PlayStoreLink } from "./PlayStoreLink";
 import { Project } from "./Project";
@@ -26,8 +25,7 @@ export function MyProjects(props: MyProjectsProps) {
           Mes projets
         </Heading>
       </Container>
-      <Card3D />
-      <Container maxW="8xl" pb="100px">
+      <Container maxW="8xl" pb="100px" zIndex={99}>
         <VStack mt="200px" spacing="150px">
           <Project
             title="Apsio SSI"
@@ -78,6 +76,7 @@ export function MyProjects(props: MyProjectsProps) {
             </Flex>
           </Project>
         </VStack>
+        <Box h="500px" bg="red"></Box>
       </Container>
     </>
   );

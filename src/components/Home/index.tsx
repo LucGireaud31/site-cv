@@ -45,8 +45,6 @@ export function Home(props: HomeProps) {
         </Flex>
       </Container>
       <Spinning />
-      <MyProjects />
-      <About />
     </>
   );
 }

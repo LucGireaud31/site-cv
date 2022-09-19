@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-    width: 0.6em;
+    width: 0.4em;
   }
    
   ::-webkit-scrollbar-track {
@@ -7,6 +7,6 @@
   }
    
   ::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
+    background-color: rgb(122, 122, 122);
     border-radius: 10px;
   }

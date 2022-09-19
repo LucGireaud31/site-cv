@@ -1,24 +1,26 @@
 import { Box, Container, Flex, Image, HStack } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { colors } from "../../theme/colors";
+import { ContainerScroll } from "../ContainerScroll";
 import { LinkItem } from "./LinkItem";
 
 export function Layout() {
   return (
-    <Box
+    <ContainerScroll
       bgGradient={`linear(to-b,theme.500, theme.300 0.4%)`}
       color="theme.500"
       w="full"
       id="header"
+      maxH="100vh"
     >
       <Container maxW="8xl" pt={8} mb={6}>
         <Flex alignItems="center" justifyContent="space-between">
           <Image src="/images/logo.png" w={50} h={50} />
           <Flex justifyContent="space-between">
             <HStack spacing={8} mr={50}>
-              <LinkItem label="Accueil" href="/" to="header" />
-              <LinkItem label="Mes projets" href="#projects" to="projects" />
-              <LinkItem label="A propos" href="#about" to="about" />
+              <LinkItem label="Accueil" to="/" />
+              <LinkItem label="Mes projects" to="/projects" />
+              <LinkItem label="A propos" to="/about" />
             </HStack>
             <Box
               as="a"
@@ -43,6 +45,6 @@ export function Layout() {
         <Box w="full" h="1px" bg={`${colors.theme["500"]}50`} mt={6} />
       </Container>
       <Outlet />
-    </Box>
+    </ContainerScroll>
   );
 }
