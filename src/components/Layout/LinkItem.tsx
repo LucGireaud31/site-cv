@@ -1,4 +1,4 @@
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 interface LinkItemProps {
   label: string;
@@ -9,9 +9,5 @@ interface LinkItemProps {
 export function LinkItem(props: LinkItemProps) {
   const { label, href, to } = props;
 
-  return (
-    <Link to={to} href={href} style={{ fontWeight: "bold" }} smooth={true}>
-      {label}
-    </Link>
-  );
+  return <Link to={href}>{label}</Link>;
 }
