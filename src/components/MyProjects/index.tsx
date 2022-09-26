@@ -1,13 +1,4 @@
-import {
-  Box,
-  Center,
-  Container,
-  Flex,
-  Heading,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Container, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { Highlight } from "../shared/Highlight";
 import { PlayStoreLink } from "./PlayStoreLink";
 import { Project } from "./Project";
@@ -76,7 +67,6 @@ export function MyProjects(props: MyProjectsProps) {
             </Flex>
           </Project>
         </VStack>
-        <Box h="500px" bg="red"></Box>
       </Container>
     </>
   );
