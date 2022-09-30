@@ -11,6 +11,7 @@ specifiers:
   '@types/three': ^0.144.0
   '@vitejs/plugin-react': ^2.0.1
   framer-motion: ^7.2.1
+  gsap: ^3.11.2
   react: ^18.2.0
   react-dom: ^18.2.0
   react-draggable: ^4.4.5
@@ -27,6 +28,7 @@ dependencies:
   '@emotion/styled': 11.10.4_4qlqmspomoqctzkikkhvhnn3qu
   '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
+  gsap: 3.11.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-draggable: 4.4.5_biqbaboplfbrettd7655fr4n2y
@@ -2114,6 +2116,10 @@ packages:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
     dev: true
+
+  /gsap/3.11.2:
+    resolution: {integrity: sha512-y1NSjM2i2yCjLtoNuoyIhhh9kmYOpFEU9su1EbHuZGN3OWr8M6NIjNHBurSWu/blbHAPQqGm7mUIokSxqTTp2Q==}
+    dev: false
 
   /has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
