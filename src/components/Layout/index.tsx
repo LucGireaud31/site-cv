@@ -18,9 +18,9 @@ export function Layout() {
             <Image src="/images/logo.png" w={50} h={50} />
             <Flex justifyContent="space-between">
               <HStack spacing={8} mr={50}>
-                <LinkItem label="Accueil" href="/" to="header" />
-                <LinkItem label="Mes projets" href="/projects" to="projects" />
-                <LinkItem label="A propos" href="" to="about" />
+                <LinkItem label="Accueil" href="/" to="home" />
+                <LinkItem label="A propos" href="/" to="about" />
+                <LinkItem label="Mes projets" href="/projects" />
               </HStack>
               <Box
                 as="a"

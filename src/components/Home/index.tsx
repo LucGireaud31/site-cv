@@ -14,7 +14,7 @@ export function Home(props: HomeProps) {
       <Container maxW="8xl" mt="120px" h="calc(100vh - 107px - 120px - 80px)">
         <Flex>
           <Box w="50%" pl={40} color="black" textAlign="left">
-            <Heading>Bonjour à tous 👋</Heading>
+            <Heading id="home">Bonjour à tous 👋</Heading>
             <HStack mt={4}>
               <Heading size="lg">Je m'appelle</Heading>
               <Heading color="theme.500" size="lg">
