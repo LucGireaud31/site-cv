@@ -3,6 +3,7 @@ import { About } from "./components/About";
 import { Home } from "./components/Home";
 import { Layout } from "./components/Layout";
 import { MyProjects } from "./components/MyProjects";
+import "animate.css";
 
 function App() {
   return (

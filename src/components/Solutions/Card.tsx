@@ -1,15 +1,25 @@
 import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 
-interface CardProps {}
+interface CardProps {
+  isActive: boolean;
+  index: number;
+  doAnimation: boolean;
+}
 
 export function Card(props: CardProps) {
-  const {} = props;
+  const { isActive, index, doAnimation } = props;
 
   const [isHover, setIsHover] = useState(false);
 
   return (
     <Box
+      className={`animate__animated animate__zoom${isActive ? "In" : "Out"}`}
+      style={{
+        animationDelay:
+          isActive && doAnimation ? `${500 + index * 200}ms` : "0",
+        animationDuration: doAnimation ? "700ms" : "0s",
+      }}
       w="380px"
       h="55vh"
       p={7}

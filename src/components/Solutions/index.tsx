@@ -1,10 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
+import { AnimatedScreen } from "./AnimatedScreen";
 import { ArrowContainer } from "./ArrowContainer";
-import { Mobile } from "./Mobile";
-import { MobileBackground } from "./MobileBackground";
-import { Web } from "./Web";
-import { WebBackground } from "./WebBackground";
 
 interface SolutionsProps {}
 
@@ -21,24 +18,52 @@ export function Solutions(props: SolutionsProps) {
     return state == INDEX_MIN ? INDEX_MAX : state - 1;
   }
 
+  const [isInitial, setIsInitial] = useState(true);
+
   const [index, setIndex] = useReducer(reducer, INDEX_MIN);
+  const [isChanging, setIsChanging] = useState(false);
 
   return (
-    <Box position="relative" pb="66px">
-      <Flex id="solutions" h="calc(100vh - 66px)" zIndex={1}>
-        {index == 0 && (
-          <>
-            <Web />
-            <WebBackground />
-          </>
-        )}
-        {index == 1 && (
-          <>
-            <Mobile />
-            <MobileBackground />
-          </>
-        )}
-        <ArrowContainer onChange={setIndex} />
+    <Box
+      id="solutions"
+      position="relative"
+      pb="66px"
+      overflow="hidden"
+      bg="theme.500"
+    >
+      <Flex id="solutions" h="calc(100vh - 67px - 66px)" zIndex={1}>
+        <AnimatedScreen
+          isActive={index == 0}
+          doAnimation={!isInitial}
+          bg="orange.500"
+          title="Sites Webs"
+          onAnimationBegin={() => {
+            setIsChanging(true);
+          }}
+          onAnimationEnd={() => {
+            setIsChanging(false);
+          }}
+        />
+        <AnimatedScreen
+          isActive={index == 1}
+          doAnimation={!isInitial}
+          bg="yellow.500"
+          title="Applications mobiles"
+          onAnimationBegin={() => {
+            setIsChanging(true);
+          }}
+          onAnimationEnd={() => {
+            setIsChanging(false);
+          }}
+        />
+
+        <ArrowContainer
+          onChange={(type) => {
+            setIsInitial(false);
+            setIndex(type);
+          }}
+          isDisabled={isChanging}
+        />
       </Flex>
     </Box>
   );

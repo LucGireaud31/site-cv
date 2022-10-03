@@ -10,6 +10,7 @@ specifiers:
   '@types/react-scroll': ^1.8.4
   '@types/three': ^0.144.0
   '@vitejs/plugin-react': ^2.0.1
+  animate.css: ^4.1.1
   framer-motion: ^7.2.1
   gsap: ^3.11.2
   phosphor-react: ^1.4.1
@@ -27,6 +28,7 @@ dependencies:
   '@emotion/react': 11.10.4_ug65io7jkbhmo4fihdmbrh3ina
   '@emotion/styled': 11.10.4_4qlqmspomoqctzkikkhvhnn3qu
   '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
+  animate.css: 4.1.1
   framer-motion: 7.2.1_biqbaboplfbrettd7655fr4n2y
   gsap: 3.11.2
   phosphor-react: 1.4.1_react@18.2.0
@@ -1662,6 +1664,10 @@ packages:
 
   /@zag-js/focus-visible/0.1.0:
     resolution: {integrity: sha512-PeaBcTmdZWcFf7n1aM+oiOdZc+sy14qi0emPIeUuGMTjbP0xLGrZu43kdpHnWSXy7/r4Ubp/vlg50MCV8+9Isg==}
+    dev: false
+
+  /animate.css/4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
     dev: false
 
   /ansi-styles/3.2.1:

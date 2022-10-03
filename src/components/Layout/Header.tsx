@@ -12,7 +12,7 @@ export function Header(props: HeaderProps) {
       position="sticky"
       top="0"
       bg="background"
-      zIndex={99}
+      zIndex={10000}
       borderBottomWidth={1}
       borderColor="theme.400"
     >
