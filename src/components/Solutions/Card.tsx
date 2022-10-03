@@ -19,6 +19,7 @@ export function Card(props: CardProps) {
         p: 0,
       })}
       transition="all 0.5s"
+      zIndex={1}
     >
       <VStack
         h="full"

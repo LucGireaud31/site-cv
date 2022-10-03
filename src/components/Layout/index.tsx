@@ -8,7 +8,7 @@ export function Layout() {
   return (
     <Box color="theme.500" id="header" position="relative" bg="background">
       <ScrollContainer maxH="100vh">
-        <Background />
+        {/* <Background /> */}
 
         <Header />
 

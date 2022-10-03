@@ -34,13 +34,14 @@ function Arrow({
   return (
     <Box
       as={direction == "left" ? ArrowLeft : ArrowRight}
-      bg="gray.300"
+      bg="white"
+      color="theme.500"
       boxSize="60px"
       rounded="full"
       p={3}
       cursor="pointer"
       _hover={{
-        bg: "gray.400",
+        bg: "gray.200",
       }}
       transition="all .5s"
       onClick={onClick}

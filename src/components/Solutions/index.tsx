@@ -1,8 +1,10 @@
-import { Flex } from "@chakra-ui/react";
-import { useReducer, useState } from "react";
+import { Box, Flex } from "@chakra-ui/react";
+import { useReducer } from "react";
 import { ArrowContainer } from "./ArrowContainer";
 import { Mobile } from "./Mobile";
+import { MobileBackground } from "./MobileBackground";
 import { Web } from "./Web";
+import { WebBackground } from "./WebBackground";
 
 interface SolutionsProps {}
 
@@ -22,16 +24,22 @@ export function Solutions(props: SolutionsProps) {
   const [index, setIndex] = useReducer(reducer, INDEX_MIN);
 
   return (
-    <Flex
-      id="solutions"
-      h="calc(100vh - 66px)"
-      bg="white"
-      pb="66px"
-      position="relative"
-    >
-      {index == 0 && <Web />}
-      {index == 1 && <Mobile />}
-      <ArrowContainer onChange={setIndex} />
-    </Flex>
+    <Box position="relative" pb="66px">
+      <Flex id="solutions" h="calc(100vh - 66px)" zIndex={1}>
+        {index == 0 && (
+          <>
+            <Web />
+            <WebBackground />
+          </>
+        )}
+        {index == 1 && (
+          <>
+            <Mobile />
+            <MobileBackground />
+          </>
+        )}
+        <ArrowContainer onChange={setIndex} />
+      </Flex>
+    </Box>
   );
 }

@@ -34,7 +34,7 @@ export function WebView() {
       style={{
         position: "relative",
         maxHeight: typeof maxH == "number" ? numberToPx(maxH) : maxH,
-        overflowY: "hidden",
+        overflow: "hidden",
         userSelect: dragging ? "none" : "auto",
       }}
     >
