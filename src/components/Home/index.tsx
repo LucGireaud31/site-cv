@@ -1,5 +1,8 @@
 import { Box, Container, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { useContext, useEffect } from "react";
 import { About } from "../About";
+import { ScrollContainerContext } from "../ScrollContainer";
+import { Solutions } from "../Solutions";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
 import { Spinning } from "./Spinning";
@@ -11,7 +14,7 @@ export function Home(props: HomeProps) {
 
   return (
     <>
-      <Container maxW="8xl" mt="120px" h="calc(100vh - 107px - 120px - 80px)">
+      <Container maxW="8xl" mt="120px" h="calc(100vh - 66px - 120px - 80px)">
         <Flex>
           <Box w="50%" pl={40} color="black" textAlign="left">
             <Heading id="home">Bonjour à tous 👋</Heading>
@@ -34,6 +37,7 @@ export function Home(props: HomeProps) {
         </Flex>
       </Container>
       <Spinning />
+      <Solutions />
       <About />
     </>
   );

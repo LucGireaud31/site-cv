@@ -26,6 +26,7 @@ export function ProfilPicture(props: ProfilPictureProps) {
         rounded="full"
         left="110px"
         top={10}
+        // filter="blur(5px)"
       />
       <Box
         bg="#FFC30080"
@@ -35,6 +36,7 @@ export function ProfilPicture(props: ProfilPictureProps) {
         rounded="full"
         right="110px"
         top="160px"
+        // filter="blur(5px)"
       />
       <Center
         position="absolute"

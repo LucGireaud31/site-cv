@@ -1,21 +1,19 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { ScrollContainerContext } from "../ScrollContainer";
+import { Box } from "@chakra-ui/react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface LinkItemProps {
   label: string;
   href: string;
-  to?: string;
 }
 
 export function LinkItem(props: LinkItemProps) {
-  const { label, href, to } = props;
+  const { label, href } = props;
 
-  const { scrollTo } = useContext(ScrollContainerContext);
+  const location = useLocation();
 
   return (
-    <Link onClick={async () => to && scrollTo(`#${to}`)} to={href}>
-      {label}
-    </Link>
+    <Box fontWeight={location.pathname == href ? "bold" : "normal"}>
+      <Link to={href}>{label}</Link>
+    </Box>
   );
 }

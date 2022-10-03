@@ -6,5 +6,6 @@ export const colors= {
         400 : "#75c0c9",
         500: "#048B9A",
         700: "#016772"
-  },
+    },
+    background: "#d5fbff"
   }
