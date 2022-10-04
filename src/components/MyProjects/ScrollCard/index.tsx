@@ -26,7 +26,7 @@ function CanvasScrollCardMemo(props: CanvasScrollCardProps) {
         top: `calc(50% - ${canvasH / 2}px)`,
       }}
     >
-      <Card
+      <ScrollCard
         beginHeight={beginHeight + inactivityH}
         endHeight={beginHeight + parentH - canvasH - inactivityH}
         {...rest}

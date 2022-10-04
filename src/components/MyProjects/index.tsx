@@ -1,8 +1,5 @@
-import { Container, Flex, Heading, Text, VStack } from "@chakra-ui/react";
-import { Highlight } from "../shared/Highlight";
-import { PlayStoreLink } from "./PlayStoreLink";
-import { Project } from "./Project";
-import { WebLink } from "./WebLink";
+import { Container, Heading } from "@chakra-ui/react";
+import { CanvasScrollCard } from "./ScrollCard";
 
 interface MyProjectsProps {}
 
@@ -16,7 +13,14 @@ export function MyProjects(props: MyProjectsProps) {
           Mes projets
         </Heading>
       </Container>
-      <Container maxW="8xl" pb="100px" zIndex={99}>
+      <CanvasScrollCard
+        inactivityH={200}
+        parentH={0}
+        offset={0}
+        canvasH={0}
+        imgSrc={""}
+      />
+      {/* <Container maxW="8xl" pb="100px" zIndex={99}>
         <VStack mt="200px" spacing="150px">
           <Project
             title="Apsio SSI"
@@ -67,7 +71,7 @@ export function MyProjects(props: MyProjectsProps) {
             </Flex>
           </Project>
         </VStack>
-      </Container>
+      </Container> */}
     </>
   );
 }

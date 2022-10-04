@@ -1,4 +1,6 @@
-import { Box, Flex, HStack, Image } from "@chakra-ui/react";
+import { Box, Container, Flex, HStack, Image } from "@chakra-ui/react";
+import { List } from "phosphor-react";
+import { DrawerMenu } from "./DrawerMenu";
 import { LinkItem } from "./LinkItem";
 
 interface HeaderProps {}
@@ -7,12 +9,12 @@ export function Header(props: HeaderProps) {
   const {} = props;
 
   return (
-    <Box
-      py={2}
+    <Container
+      maxW="8xl"
+      py={6}
       position="sticky"
       top="0"
-      bg="background"
-      zIndex={10000}
+      zIndex={50}
       borderBottomWidth={1}
       borderColor="theme.400"
     >
@@ -23,7 +25,8 @@ export function Header(props: HeaderProps) {
             <LinkItem label="Accueil" href="/" />
             <LinkItem label="Mes projets" href="/projects" />
           </HStack>
-          <Box
+          <DrawerMenu />
+          {/* <Box
             as="a"
             href="/documents/cv.pdf"
             target="_blank"
@@ -40,9 +43,9 @@ export function Header(props: HeaderProps) {
             }}
           >
             Mon CV
-          </Box>
+          </Box> */}
         </Flex>
       </Flex>
-    </Box>
+    </Container>
   );
 }
