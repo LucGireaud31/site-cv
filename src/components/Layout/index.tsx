@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { ScrollContainer } from "../ScrollContainer";
+import { ScrollContainer } from "../../utils/ScrollContainer";
 import { Header } from "./Header";
 
 export function Layout() {

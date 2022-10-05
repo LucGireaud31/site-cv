@@ -83,6 +83,24 @@ export function About(props: AboutProps) {
           </Card>
         </HStack>
       </VStack>
+      {/* <Box
+            as="a"
+            href="/documents/cv.pdf"
+            target="_blank"
+            border="2px solid"
+            borderColor="theme.500"
+            fontWeight="bold"
+            py={2}
+            px={10}
+            ml={15}
+            cursor="pointer"
+            _hover={{
+              color: "white",
+              bg: "theme.400",
+            }}
+          >
+            Mon CV
+          </Box> */}
     </Container>
   );
 }

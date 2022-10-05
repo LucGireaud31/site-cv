@@ -11,8 +11,10 @@ import {
   Input,
   Text,
   useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 import { List } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 interface DrawerMenuProps {}
 
@@ -33,24 +35,29 @@ export function DrawerMenu(props: DrawerMenuProps) {
         }}
         onClick={onOpen}
       />
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={isOpen} onClose={onClose} size="md">
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder="Type here..." />
+        <DrawerContent px={20} pb={10}>
+          <DrawerBody mt={20} fontSize="lg" position="relative">
+            <DrawerCloseButton right={0} top={0} size="lg" color="theme.500" />
+            <VStack align="flex-start" spacing={5}>
+              <LinkItem label="Accueil" />
+              <LinkItem label="Mes services" />
+              <LinkItem label="Mes projets" />
+              <LinkItem label="A propos de moi" />
+              <LinkItem label="Contact" />
+            </VStack>
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
+            <Text>© 2022 Luc Gireaud</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
   );
+}
+
+function LinkItem({ label }: { label: string }) {
+  return <Link to="">{label}</Link>;
 }

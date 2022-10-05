@@ -26,24 +26,6 @@ export function Header(props: HeaderProps) {
             <LinkItem label="Mes projets" href="/projects" />
           </HStack>
           <DrawerMenu />
-          {/* <Box
-            as="a"
-            href="/documents/cv.pdf"
-            target="_blank"
-            border="2px solid"
-            borderColor="theme.500"
-            fontWeight="bold"
-            py={2}
-            px={10}
-            ml={15}
-            cursor="pointer"
-            _hover={{
-              color: "white",
-              bg: "theme.400",
-            }}
-          >
-            Mon CV
-          </Box> */}
         </Flex>
       </Flex>
     </Container>
