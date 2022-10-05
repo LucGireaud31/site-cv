@@ -17,6 +17,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-draggable: ^4.4.5
+  react-perfect-scrollbar: ^1.5.8
   react-router-dom: '6'
   react-three: ^0.9.7
   three: ^0.144.0
@@ -35,6 +36,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-draggable: 4.4.5_biqbaboplfbrettd7655fr4n2y
+  react-perfect-scrollbar: 1.5.8_biqbaboplfbrettd7655fr4n2y
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   react-three: 0.9.7_ww22p6cticflcq7fk2rysgxj34
   three: 0.144.0
@@ -2287,6 +2289,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /perfect-scrollbar/1.5.5:
+    resolution: {integrity: sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==}
+    dev: false
+
   /phosphor-react/1.4.1_react@18.2.0:
     resolution: {integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==}
     engines: {node: '>=10'}
@@ -2388,6 +2394,18 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-perfect-scrollbar/1.5.8_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bQ46m70gp/HJtiBOF3gRzBISSZn8FFGNxznTdmTG8AAwpxG1bJCyn7shrgjEvGSQ5FJEafVEiosY+ccER11OSA==}
+    peerDependencies:
+      react: '>=16.3.3'
+      react-dom: '>=16.3.3'
+    dependencies:
+      perfect-scrollbar: 1.5.5
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-reconciler/0.27.0_react@18.2.0:
