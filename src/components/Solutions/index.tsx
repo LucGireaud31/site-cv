@@ -27,7 +27,7 @@ export function Solutions(props: SolutionsProps) {
     <Box
       id="solutions"
       position="relative"
-      pb="66px"
+      pb="50px"
       overflow="hidden"
       bg="theme.500"
     >

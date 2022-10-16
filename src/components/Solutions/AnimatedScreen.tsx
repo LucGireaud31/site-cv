@@ -57,26 +57,20 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         }}
         style={{
           position: "absolute",
-          top: "25%",
+          top: "18%",
           display: display ? "block" : "none",
         }}
       >
         <Flex zIndex={1} h="fit-content">
-          <Center
-            flexDir="column"
-            textAlign="center"
-            px="160px"
-            color="black"
-            zIndex={1}
-          >
-            <Heading fontSize="6xl">{title}</Heading>
-            <Text mt={8}>
+          <Center flexDir="column" textAlign="center" color="black" zIndex={1}>
+            <Heading fontSize="7xl">{title}</Heading>
+            <Text mt={8} px="160px" fontSize="lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
               aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
               amet quam.
             </Text>
-            <Button mt={12} colorScheme="blackAlpha">
+            <Button mt={12} colorScheme="blackAlpha" size="lg">
               Découvrir React
             </Button>
           </Center>

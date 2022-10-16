@@ -21,7 +21,7 @@ export function Card(props: CardProps) {
         animationDuration: doAnimation ? "700ms" : "0s",
       }}
       w="380px"
-      h="55vh"
+      h="60vh"
       p={7}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
