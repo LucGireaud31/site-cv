@@ -7,6 +7,7 @@ import {
   HStack,
   Text,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { AnimatedDiv } from "../shared/AnimatedDiv";
 import { Card } from "./Card";
 
@@ -23,6 +24,8 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
   const { isActive, onAnimationEnd, onAnimationBegin, bg, title, doAnimation } =
     props;
 
+  const [display, setDisplay] = useState(isActive);
+
   return (
     <>
       <Box
@@ -33,6 +36,7 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         w="full"
         h="full"
         bg={bg}
+        display={display ? "block" : "none"}
         style={{
           animationDuration: doAnimation ? "1s" : "0s",
         }}
@@ -43,11 +47,18 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         animationInactive="animate__rotateOutDownRight"
         animationDuration={1000}
         doAnimation={doAnimation}
-        onAnimationEnd={onAnimationEnd}
-        onAnimationBegin={onAnimationBegin}
+        onAnimationEnd={() => {
+          setDisplay(false);
+          onAnimationEnd();
+        }}
+        onAnimationBegin={() => {
+          setDisplay(true);
+          onAnimationBegin();
+        }}
         style={{
           position: "absolute",
-          top: "15%",
+          top: "25%",
+          display: display ? "block" : "none",
         }}
       >
         <Flex zIndex={1} h="fit-content">

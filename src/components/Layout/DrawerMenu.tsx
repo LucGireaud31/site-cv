@@ -1,19 +1,15 @@
 import {
   Box,
-  Button,
   Drawer,
   DrawerBody,
-  DrawerCloseButton,
   DrawerContent,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
-  Input,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import { List } from "phosphor-react";
+import { List, X } from "phosphor-react";
 import { Link } from "react-router-dom";
 
 interface DrawerMenuProps {}
@@ -22,6 +18,19 @@ export function DrawerMenu(props: DrawerMenuProps) {
   const {} = props;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
+
+  function LinkItem({ label }: { label: string }) {
+    return (
+      <Link
+        to=""
+        onClick={() => {
+          onClose();
+        }}
+      >
+        {label}
+      </Link>
+    );
+  }
 
   return (
     <>
@@ -39,7 +48,23 @@ export function DrawerMenu(props: DrawerMenuProps) {
         <DrawerOverlay />
         <DrawerContent px={20} pb={10} bg="theme.500" color="white">
           <DrawerBody mt={20} fontSize="lg" position="relative">
-            <DrawerCloseButton right={0} top={0} size="lg" color="white" />
+            <Box
+              as={X}
+              position="absolute"
+              right={0}
+              top={0}
+              size="lg"
+              color="redwhite"
+              boxSize="32px"
+              cursor="pointer"
+              rounded="md"
+              p={1}
+              transition="all 0.5s"
+              onClick={onClose}
+              _hover={{
+                color: "theme.400",
+              }}
+            />
             <VStack align="flex-start" spacing={5}>
               <LinkItem label="Accueil" />
               <LinkItem label="Mes services" />
@@ -56,8 +81,4 @@ export function DrawerMenu(props: DrawerMenuProps) {
       </Drawer>
     </>
   );
-}
-
-function LinkItem({ label }: { label: string }) {
-  return <Link to="">{label}</Link>;
 }

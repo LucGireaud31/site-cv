@@ -31,7 +31,7 @@ export function Solutions(props: SolutionsProps) {
       overflow="hidden"
       bg="theme.500"
     >
-      <Flex id="solutions" h="calc(100vh - 67px - 66px)" zIndex={1}>
+      <Flex id="solutions" h="100vh" zIndex={1}>
         <AnimatedScreen
           isActive={index == 0}
           doAnimation={!isInitial}

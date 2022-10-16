@@ -28,7 +28,7 @@ export function Home(props: HomeProps) {
         id="home"
         maxW="8xl"
         mt="50px"
-        h="calc(100vh - 154px - 50px - 80px)"
+        h="calc(100vh - 98px - 50px - 80px)"
       >
         <Flex>
           <Box w="50%" pl={40} color="black" textAlign="left">

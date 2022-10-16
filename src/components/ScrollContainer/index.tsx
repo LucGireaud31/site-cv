@@ -8,6 +8,8 @@ interface ScrollContainerProps {
   children: ReactNode;
   maxH: number | string; // number = px
   animationDuration?: number; // ms
+  enableScrollX?: boolean;
+  enableScrollY?: boolean;
 }
 
 export const ScrollContainerContext = createContext({
@@ -21,7 +23,13 @@ export const ScrollContainerContext = createContext({
 });
 
 export function ScrollContainer(props: ScrollContainerProps) {
-  const { children, maxH, animationDuration = 700 } = props;
+  const {
+    children,
+    maxH,
+    animationDuration = 700,
+    enableScrollX = false,
+    enableScrollY = true,
+  } = props;
 
   // const containerRef = useRef<HTMLDivElement | null>(null);
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
@@ -61,6 +69,10 @@ export function ScrollContainer(props: ScrollContainerProps) {
       <PerfectScrollbar
         style={{
           maxHeight: maxH,
+        }}
+        options={{
+          suppressScrollX: !enableScrollX,
+          suppressScrollY: !enableScrollY,
         }}
         containerRef={(ref) => setContainerRef(ref)}
         onScrollY={(e) => {
