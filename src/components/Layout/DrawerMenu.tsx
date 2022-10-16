@@ -39,8 +39,9 @@ export function DrawerMenu(props: DrawerMenuProps) {
         size={32}
         color="theme.500"
         cursor="pointer"
+        transition="color .2s"
         _hover={{
-          color: "black",
+          color: "theme.400",
         }}
         onClick={onOpen}
       />
@@ -59,7 +60,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
               cursor="pointer"
               rounded="md"
               p={1}
-              transition="all 0.5s"
+              transition="all .2s"
               onClick={onClose}
               _hover={{
                 color: "theme.400",
