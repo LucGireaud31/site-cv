@@ -27,8 +27,8 @@ export function Home(props: HomeProps) {
       <Container
         id="home"
         maxW="8xl"
-        mt="120px"
-        h="calc(100vh - 66px - 120px - 80px)"
+        mt="50px"
+        h="calc(100vh - 154px - 50px - 80px)"
       >
         <Flex>
           <Box w="50%" pl={40} color="black" textAlign="left">

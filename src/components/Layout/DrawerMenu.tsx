@@ -37,9 +37,9 @@ export function DrawerMenu(props: DrawerMenuProps) {
       />
       <Drawer isOpen={isOpen} onClose={onClose} size="md">
         <DrawerOverlay />
-        <DrawerContent px={20} pb={10}>
+        <DrawerContent px={20} pb={10} bg="theme.500" color="white">
           <DrawerBody mt={20} fontSize="lg" position="relative">
-            <DrawerCloseButton right={0} top={0} size="lg" color="theme.500" />
+            <DrawerCloseButton right={0} top={0} size="lg" color="white" />
             <VStack align="flex-start" spacing={5}>
               <LinkItem label="Accueil" />
               <LinkItem label="Mes services" />

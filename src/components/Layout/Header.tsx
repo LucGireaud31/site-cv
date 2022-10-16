@@ -1,5 +1,5 @@
-import { Box, Container, Flex, HStack, Image } from "@chakra-ui/react";
-import { List } from "phosphor-react";
+import { Box, Flex, HStack, Image } from "@chakra-ui/react";
+import { colors } from "../../theme/colors";
 import { DrawerMenu } from "./DrawerMenu";
 import { LinkItem } from "./LinkItem";
 
@@ -9,14 +9,17 @@ export function Header(props: HeaderProps) {
   const {} = props;
 
   return (
-    <Container
-      maxW="8xl"
+    <Box
       py={6}
+      px="150px"
       position="sticky"
       top="0"
       zIndex={50}
-      borderBottomWidth={1}
       borderColor="theme.400"
+      bg="backgroundLight"
+      w="calc(100vw + 100px)"
+      ml="-50px"
+      boxShadow={`0px 50px 40px ${colors.backgroundLight}`}
     >
       <Flex alignItems="center" justifyContent="space-between" px="100px">
         <Image src="/images/logo.png" w={50} h={50} />
@@ -28,6 +31,6 @@ export function Header(props: HeaderProps) {
           <DrawerMenu />
         </Flex>
       </Flex>
-    </Container>
+    </Box>
   );
 }
