@@ -1,0 +1,20 @@
+.ps__rail-y {
+    background-color: transparent !important;
+    width:8px
+}
+
+.ps__rail-y:hover {
+    width:12px
+}
+
+.ps__thumb-y {
+    box-sizing: border-box;
+    background-clip: content-box;
+    border: 2px solid transparent;
+    right:0;
+    width:8px;
+}
+
+.ps__thumb-y:hover {
+    width:12px !important;
+}
