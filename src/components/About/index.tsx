@@ -1,87 +1,67 @@
-import {
-  Container,
-  Heading,
-  Text,
-  VStack,
-  Image,
-  HStack,
-} from "@chakra-ui/react";
-import { Card } from "./Card";
-import { LogoWithSatellites } from "./LogoWithSatellites";
+import { Box, Center, Container, Image } from "@chakra-ui/react";
 
 interface AboutProps {}
+
+const SPACE = 20;
 
 export function About(props: AboutProps) {
   const {} = props;
 
   return (
-    <Container maxW="8xl" h="calc(100vh - 107px - 24px)">
-      <Heading textAlign="center" pt={50} id="about">
-        A propos
-      </Heading>
-      <VStack mt="70px" spacing="100px">
-        <HStack spacing="150px">
-          <Card
-            title="J'utilise ces technologies"
-            lines={["React", "React Native", "Vite.js"]}
+    <Container
+      display="flex"
+      alignItems="center"
+      maxW="8xl"
+      h="calc(100vh - 98px)"
+    >
+      <Box
+        w="400px"
+        h="500px"
+        position="relative"
+        border="8px solid"
+        borderColor="theme.500"
+      >
+        <Box
+          position="absolute"
+          bottom={`${SPACE}px`}
+          left={`${SPACE}px`}
+          zIndex={2}
+          border="8px solid"
+          borderColor="background"
+        >
+          <Box
+            w="400px"
+            h="500px"
+            bg="background"
+            border="8px solid"
+            borderColor="theme.500"
+            position="relative"
+            overflow="hidden"
+            zIndex={1}
           >
-            <>
-              <Image
-                src="/images/react.png"
-                w="32px"
-                position="absolute"
-                left={50}
-                top={10}
-              />
-              <Image
-                src="/images/vite.png"
-                w="32px"
-                position="absolute"
-                left={50}
-                bottom={10}
-              />
-              <Text position="absolute" right={50} top="40%">
-                💪
-              </Text>
-            </>
-          </Card>
-        </HStack>
-        <HStack spacing="150px">
-          <Image src="images/communication.png" w="200px" />
-          <Card
-            title="Outils de communication"
-            lines={[
-              "Figma (pour les maquettes)",
-              "Google meet (si rdv à distance)",
-              "Google drive (partage de docs)",
-            ]}
-          >
-            <>
-              <Image
-                src="/images/google_drive.png"
-                w="25px"
-                position="absolute"
-                left={50}
-                top="40%"
-              />
-              <Image
-                src="/images/figma.svg"
-                w="18px"
-                position="absolute"
-                right={50}
-                top={10}
-              />
-              <Image
-                src="/images/google_meet.png"
-                w="25px"
-                position="absolute"
-                right={50}
-                bottom={10}
-              />
-            </>
-          </Card>
-        </HStack>
-      </VStack>
+            <Box
+              zIndex={-1}
+              bg="yellowBall"
+              boxSize="300px"
+              position="absolute"
+              rounded="full"
+              right="-40px"
+              top={10}
+            />{" "}
+            <Box
+              zIndex={-1}
+              bg="orangeBall"
+              boxSize="300px"
+              position="absolute"
+              rounded="full"
+              left="-180px"
+              bottom="-50px"
+            />
+            <Image src="images/luc2_flip.png" />
+          </Box>
+        </Box>
+      </Box>
+      <Box w="60%" h="full"></Box>
       {/* <Box
             as="a"
             href="/documents/cv.pdf"

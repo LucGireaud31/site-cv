@@ -35,7 +35,7 @@ export function Solutions(props: SolutionsProps) {
         <AnimatedScreen
           isActive={index == 0}
           doAnimation={!isInitial}
-          bg="orange.500"
+          bg="orange"
           title="Sites Webs"
           onAnimationBegin={() => {
             setIsChanging(true);
@@ -47,7 +47,7 @@ export function Solutions(props: SolutionsProps) {
         <AnimatedScreen
           isActive={index == 1}
           doAnimation={!isInitial}
-          bg="yellow.500"
+          bg="yellow"
           title="Applications mobiles"
           onAnimationBegin={() => {
             setIsChanging(true);

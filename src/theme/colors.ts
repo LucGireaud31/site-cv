@@ -7,13 +7,12 @@ export const colors = {
         500: "#048B9A",
         700: "#016772"
     },
-    yellow: {
-        300:"",
-        500:"#ecb920"
-    },
-    orange: {
-        500:"#e17e23"
-    },   
+    yellow:"#FFC300",
+    yellowBall:"#FFC30099",
+    
+    orange:"#e17e23",
+    orangeBall:"#e17e23b3",
+      
     background: "#d5fbff",
     backgroundLight: "#d5fbffed",
 }

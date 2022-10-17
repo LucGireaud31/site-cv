@@ -24,7 +24,7 @@ export function ProfilPicture(props: ProfilPictureProps) {
         position="absolute"
       />
       <Box
-        bg={`${colors.theme["500"]}80`}
+        bg="orangeBall"
         boxSize="300px"
         zIndex={2}
         position="absolute"
@@ -33,7 +33,7 @@ export function ProfilPicture(props: ProfilPictureProps) {
         top={10}
       />
       <Box
-        bg="#FFC30080"
+        bg="yellowBall"
         boxSize="300px"
         zIndex={1}
         position="absolute"
