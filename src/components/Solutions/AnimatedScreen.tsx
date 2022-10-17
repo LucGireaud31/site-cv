@@ -70,7 +70,14 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
               aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
               amet quam.
             </Text>
-            <Button mt={12} colorScheme="blackAlpha" size="lg">
+            <Button
+              as="a"
+              href="https://fr.reactjs.org/docs/getting-started.html"
+              target="_blank"
+              mt={12}
+              colorScheme="blackAlpha"
+              size="lg"
+            >
               Découvrir React
             </Button>
           </Center>

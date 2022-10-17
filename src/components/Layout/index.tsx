@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { ScrollContainer } from "../ScrollContainer";
+import { Highlight } from "../shared/Highlight";
 import { Header } from "./Header";
 
 export function Layout() {
@@ -12,6 +13,10 @@ export function Layout() {
         <Box zIndex={100}>
           <Outlet />
         </Box>
+        <Box w="full" h="1px" bg="theme.400" />
+        <Center h="80px">
+          © 2022 -<Highlight type="bold">Freelance</Highlight>, Luc Gireaud
+        </Center>
       </ScrollContainer>
     </Box>
   );
