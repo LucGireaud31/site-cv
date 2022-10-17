@@ -7,9 +7,8 @@ import {
   HStack,
   Text,
 } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
+import { useLocationChange } from "../../hooks/useLocationChange";
 import { About } from "../About";
-import { ScrollContainerContext } from "../ScrollContainer";
 import { Solutions } from "../Solutions";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
@@ -20,15 +19,7 @@ interface HomeProps {}
 export function Home(props: HomeProps) {
   const {} = props;
 
-  useEffect(() => {
-    function onWheel(e: Event) {}
-
-    window.addEventListener("wheel", onWheel);
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-    };
-  }, []);
+  useLocationChange();
 
   return (
     <>

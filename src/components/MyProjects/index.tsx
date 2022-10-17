@@ -1,4 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
+import { useLocationChange } from "../../hooks/useLocationChange";
 import { CanvasScrollCard } from "./ScrollCard";
 
 interface MyProjectsProps {}
@@ -6,9 +7,11 @@ interface MyProjectsProps {}
 export function MyProjects(props: MyProjectsProps) {
   const {} = props;
 
+  useLocationChange();
+
   return (
     <>
-      <Container maxW="8xl">
+      <Container maxW="8xl" minH="100vh">
         <Heading textAlign="center" pt={50} id="projects">
           Mes projets
         </Heading>

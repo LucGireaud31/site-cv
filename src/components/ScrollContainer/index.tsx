@@ -7,7 +7,7 @@ import "./index.css";
 interface ScrollContainerProps {
   children: ReactNode;
   maxH: number | string; // number = px
-  animationDuration?: number; // ms
+  defaultAnimationDuration?: number; // ms
   enableScrollX?: boolean;
   enableScrollY?: boolean;
 }
@@ -15,10 +15,17 @@ interface ScrollContainerProps {
 export const ScrollContainerContext = createContext({
   isDisabled: true,
   setIsDisabled: (d: boolean) => {},
-  scrollTo: (
-    className: string,
-    options?: { pt?: number; animationDuration?: number }
-  ) => {},
+  scrollTo: ({
+    className,
+    pt,
+    top,
+    animationDuration,
+  }: {
+    className?: string;
+    pt?: number;
+    animationDuration?: number;
+    top?: number;
+  }) => {},
   scrollTop: 0,
 });
 
@@ -26,7 +33,7 @@ export function ScrollContainer(props: ScrollContainerProps) {
   const {
     children,
     maxH,
-    animationDuration = 700,
+    defaultAnimationDuration = 700,
     enableScrollX = false,
     enableScrollY = true,
   } = props;
@@ -37,24 +44,37 @@ export function ScrollContainer(props: ScrollContainerProps) {
   const [currentScrollTop, setCurrentScrollTop] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  function scrollTo(
-    className: string,
-    options?: { pt?: number; animationDuration?: number /*ms*/ }
-  ) {
-    const duration = (options?.animationDuration ?? animationDuration) / 1000;
+  function scrollTo({
+    className,
+    pt,
+    animationDuration,
+    top,
+  }: {
+    className?: string;
+    pt?: number;
+    animationDuration?: number;
+    top?: number;
+  }) {
+    if (!className && top == undefined) return;
 
-    const el = document.querySelector(className);
+    const duration = (animationDuration ?? defaultAnimationDuration) / 1000;
 
     const newY = Math.round(
-      (el?.getClientRects()[0].y ?? 0) -
-        (containerRef?.getBoundingClientRect().y ?? 0) +
-        (containerRef?.scrollTop ?? 0)
+      className
+        ? document.querySelector("." + className)?.getClientRects()[0].y ?? 0
+        : top != undefined
+        ? top
+        : 0 -
+          (containerRef?.getBoundingClientRect().y ?? 0) +
+          (containerRef?.scrollTop ?? 0)
     );
 
-    gsap.to(containerRef, {
-      scrollTop: newY - (options?.pt ?? 0),
-      duration,
-    });
+    if (containerRef) {
+      gsap.to(containerRef, {
+        scrollTop: newY - (pt ?? 0),
+        duration,
+      });
+    }
   }
 
   return (

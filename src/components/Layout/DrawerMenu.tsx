@@ -54,7 +54,6 @@ export function DrawerMenu(props: DrawerMenuProps) {
               position="absolute"
               right={0}
               top={0}
-              size="lg"
               color="redwhite"
               boxSize="32px"
               cursor="pointer"
