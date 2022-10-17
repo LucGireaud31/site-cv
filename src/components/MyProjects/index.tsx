@@ -1,6 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
 import { useLocationChange } from "../../hooks/useLocationChange";
-import { CanvasScrollCard } from "./ScrollCard";
 
 interface MyProjectsProps {}
 
@@ -16,13 +15,6 @@ export function MyProjects(props: MyProjectsProps) {
           Mes projets
         </Heading>
       </Container>
-      <CanvasScrollCard
-        inactivityH={200}
-        parentH={0}
-        offset={0}
-        canvasH={0}
-        imgSrc={""}
-      />
       {/* <Container maxW="8xl" pb="100px" zIndex={99}>
         <VStack mt="200px" spacing="150px">
           <Project
