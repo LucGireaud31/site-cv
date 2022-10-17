@@ -1,85 +1,61 @@
-import { Box, Center, Container, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { Frame } from "./Frame";
 
 interface AboutProps {}
-
-const SPACE = 20;
 
 export function About(props: AboutProps) {
   const {} = props;
 
   return (
     <Container
-      display="flex"
-      alignItems="center"
       maxW="8xl"
       h="calc(100vh - 98px)"
+      display="flex"
+      alignItems="center"
     >
-      <Box
-        w="400px"
-        h="500px"
-        position="relative"
-        border="8px solid"
-        borderColor="theme.500"
-      >
-        <Box
-          position="absolute"
-          bottom={`${SPACE}px`}
-          left={`${SPACE}px`}
-          zIndex={2}
-          border="8px solid"
-          borderColor="background"
-        >
-          <Box
-            w="400px"
-            h="500px"
-            bg="background"
-            border="8px solid"
-            borderColor="theme.500"
-            position="relative"
-            overflow="hidden"
-            zIndex={1}
-          >
-            <Box
-              zIndex={-1}
-              bg="yellowBall"
-              boxSize="300px"
-              position="absolute"
-              rounded="full"
-              right="-40px"
-              top={10}
-            />{" "}
-            <Box
-              zIndex={-1}
-              bg="orangeBall"
-              boxSize="300px"
-              position="absolute"
-              rounded="full"
-              left="-180px"
-              bottom="-50px"
-            />
-            <Image src="images/luc2_flip.png" />
+      <HStack align="center" justifyContent="center" spacing="150px">
+        <Frame />
+        <VStack w="40%" align="left" spacing={10}>
+          <Box>
+            <Heading>A propos de moi</Heading>
+            <Box w="150px" h="8px" bg="theme.500" rounded="sm" mt={2} />
           </Box>
-        </Box>
-      </Box>
-      <Box w="60%" h="full"></Box>
-      {/* <Box
-            as="a"
-            href="/documents/cv.pdf"
-            target="_blank"
-            border="2px solid"
-            borderColor="theme.500"
-            fontWeight="bold"
-            py={2}
-            px={10}
-            ml={15}
-            cursor="pointer"
-            _hover={{
-              color: "white",
-              bg: "theme.400",
-            }}
-          >
-            Mon CV
-          </Box> */}
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
+            aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
+            amet quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Fusce condimentum odio in purus volutpat accumsan. Ut suscipit, urna
+            nec aliquam eleifend, enim orci auctor nibh, at congue nisi tortor
+            sit amet quam. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Fusce condimentum odio in purus volutpat accumsan. Ut
+            suscipit, urna nec aliquam eleifend, enim orci auctor nibh, at
+            congue nisi tortor sit amet quam.
+          </Text>
+          <HStack>
+            <Button>Me contacter</Button>
+            <Button
+              as="a"
+              variant="outline"
+              href="/documents/cv.pdf"
+              target="_blank"
+            >
+              Télécharger mon CV
+            </Button>
+          </HStack>
+        </VStack>
+      </HStack>
     </Container>
   );
 }

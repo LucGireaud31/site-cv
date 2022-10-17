@@ -17,9 +17,13 @@ export function HaveAProject() {
         fontWeight="bold"
         textAlign="center"
         cursor="pointer"
+        transition="all .3s"
         _hover={{
           bg: "theme.400",
           color: "white",
+        }}
+        _active={{
+          bg: "theme.500",
         }}
       >
         Contactez-moi

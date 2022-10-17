@@ -5,7 +5,8 @@ export const colors = {
         300: "#C9FAFF",
         400: "#75c0c9",
         500: "#048B9A",
-        700: "#016772"
+        600:"#056f7a",
+        700: "#05545c"
     },
     yellow:"#FFC300",
     yellowBall:"#FFC30099",
