@@ -45,7 +45,6 @@ export function About(props: AboutProps) {
               </Text>
             </>
           </Card>
-          {/* <LogoWithSatellites /> */}
         </HStack>
         <HStack spacing="150px">
           <Image src="images/communication.png" w="200px" />

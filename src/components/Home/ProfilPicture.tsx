@@ -9,12 +9,17 @@ export function ProfilPicture(props: ProfilPictureProps) {
   const toast = useToast();
 
   return (
-    <Box position="relative">
+    <Box
+      position="relative"
+      width="600px"
+      height="500px"
+      borderBottom="3px solid"
+    >
       <Image
-        src="/images/luc.png"
-        w="500px"
-        left="120px"
-        mt="-100px"
+        src="/images/luc2.png"
+        w="400px"
+        left="100px"
+        bottom={0}
         zIndex={3}
         position="absolute"
       />
@@ -24,9 +29,8 @@ export function ProfilPicture(props: ProfilPictureProps) {
         zIndex={2}
         position="absolute"
         rounded="full"
-        left="110px"
+        left="50px"
         top={10}
-        // filter="blur(5px)"
       />
       <Box
         bg="#FFC30080"
@@ -34,9 +38,8 @@ export function ProfilPicture(props: ProfilPictureProps) {
         zIndex={1}
         position="absolute"
         rounded="full"
-        right="110px"
-        top="160px"
-        // filter="blur(5px)"
+        right="50px"
+        bottom={10}
       />
       <Center
         position="absolute"
@@ -44,8 +47,8 @@ export function ProfilPicture(props: ProfilPictureProps) {
         h="40px"
         bg="white"
         rounded="full"
-        top={10}
-        left={40}
+        top="180px"
+        right="80px"
         zIndex={5}
         cursor="pointer"
         onClick={() => {
@@ -64,7 +67,8 @@ export function ProfilPicture(props: ProfilPictureProps) {
       <Link
         right={40}
         zIndex={5}
-        top={10}
+        top="45px"
+        left="100px"
         position="absolute"
         href="https://www.linkedin.com/in/luc-gireaud-09b04b245"
         target="_blank"
@@ -72,8 +76,8 @@ export function ProfilPicture(props: ProfilPictureProps) {
         <Image src="/images/linked_in.png" w="40px" h="40px" />
       </Link>
       <Link
-        top={250}
-        right="95px"
+        bottom="80px"
+        right="60px"
         position="absolute"
         target="_blank"
         zIndex={5}

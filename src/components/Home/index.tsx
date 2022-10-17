@@ -1,4 +1,12 @@
-import { Box, Container, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Text,
+} from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { About } from "../About";
 import { ScrollContainerContext } from "../ScrollContainer";
@@ -30,23 +38,25 @@ export function Home(props: HomeProps) {
         mt="50px"
         h="calc(100vh - 98px - 50px - 80px)"
       >
-        <Flex>
-          <Box w="50%" pl={40} color="black" textAlign="left">
-            <Heading>Bonjour à tous 👋</Heading>
-            <HStack mt={4}>
-              <Heading size="lg">Je m'appelle</Heading>
-              <Heading color="theme.500" size="lg">
-                Luc Gireaud
-              </Heading>
-            </HStack>
-            <Text mt={9} fontSize="xl" color="gray.600">
-              Je suis développeur web et mobile.
-            </Text>
-            <Text mt={2} fontSize="xl" color="gray.600">
-              Je réalise vos projets dans la bonne humeur.
-            </Text>
-            <HaveAProject />
-          </Box>
+        <Flex h="full" alignItems="center" pb="80px">
+          <Center w="50%" color="black" textAlign="left">
+            <Box>
+              <Heading>Bonjour à tous 👋</Heading>
+              <HStack mt={4}>
+                <Heading size="lg">Je m'appelle</Heading>
+                <Heading color="theme.500" size="lg">
+                  Luc Gireaud
+                </Heading>
+              </HStack>
+              <Text mt={9} fontSize="xl" color="gray.600">
+                Je suis développeur web et mobile.
+              </Text>
+              <Text mt={2} fontSize="xl" color="gray.600">
+                Je réalise vos projets dans la bonne humeur.
+              </Text>
+              <HaveAProject />
+            </Box>
+          </Center>
           <Box w="50%">
             <ProfilPicture />
           </Box>
