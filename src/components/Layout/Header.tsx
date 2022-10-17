@@ -1,7 +1,5 @@
 import { Box, Flex, HStack, Image } from "@chakra-ui/react";
-import { useContext, useMemo } from "react";
 import { colors } from "../../theme/colors";
-import { ScrollContainerContext } from "../ScrollContainer";
 import { DrawerMenu } from "./DrawerMenu";
 import { LinkItem } from "./LinkItem";
 
@@ -9,12 +7,6 @@ interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
   const {} = props;
-
-  const { scrollTop } = useContext(ScrollContainerContext);
-
-  const disableBackground = useMemo(() => {
-    return scrollTop > document.documentElement.clientHeight - 34; // 24 = margin top of header
-  }, [scrollTop]);
 
   return (
     <Box
@@ -27,12 +19,7 @@ export function Header(props: HeaderProps) {
       bg="backgroundLight"
       w="calc(100vw + 100px)"
       ml="-50px"
-      boxShadow={`0px 50px 40px ${colors.backgroundLight}`}
-      transition="background .5s, box-shadow .5s"
-      {...(disableBackground && {
-        bg: "transparent",
-        boxShadow: "",
-      })}
+      boxShadow={`0px 10px 10px ${colors.backgroundLight}`}
     >
       <Flex alignItems="center" justifyContent="space-between" px="100px">
         <Image src="/images/logo.png" w={50} h={50} />

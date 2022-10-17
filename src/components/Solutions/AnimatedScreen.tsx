@@ -57,7 +57,7 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         }}
         style={{
           position: "absolute",
-          top: "18%",
+          top: "20%",
           display: display ? "block" : "none",
         }}
       >
