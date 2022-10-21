@@ -1,5 +1,6 @@
-import { Container, Heading } from "@chakra-ui/react";
+import { Box, Container, Heading } from "@chakra-ui/react";
 import { useLocationChange } from "../../hooks/useLocationChange";
+import { MultiScrollCards } from "../ScrollCard/MultiScrollCard";
 
 interface MyProjectsProps {}
 
@@ -10,11 +11,25 @@ export function MyProjects(props: MyProjectsProps) {
 
   return (
     <>
-      <Container maxW="8xl" minH="100vh">
+      <Box minH="100vh">
         <Heading textAlign="center" pt={50} id="projects">
           Mes projets
         </Heading>
-      </Container>
+        <MultiScrollCards
+          cards={[
+            {
+              img1: "3d/apsio-ssi.hdr",
+              img2: "3d/apsio-ssi2.hdr",
+              zoom: 8,
+              mesh: {
+                color: "#008990",
+              },
+            },
+            { img1: "3d/apsio_coin2.hdr", img2: "3d/apsio_coin.hdr", zoom: 8 },
+          ]}
+          offset={93 + 98}
+        />
+      </Box>
       {/* <Container maxW="8xl" pb="100px" zIndex={99}>
         <VStack mt="200px" spacing="150px">
           <Project

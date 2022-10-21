@@ -38,7 +38,6 @@ export function ScrollContainer(props: ScrollContainerProps) {
     enableScrollY = true,
   } = props;
 
-  // const containerRef = useRef<HTMLDivElement | null>(null);
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
 
   const [currentScrollTop, setCurrentScrollTop] = useState(0);
