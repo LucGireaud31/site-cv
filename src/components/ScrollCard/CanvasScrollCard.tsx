@@ -26,13 +26,13 @@ export function CanvasScrollCard(props: CanvasScrollCardProps) {
           position: "sticky",
           top: `calc(50% - ${clientH / 2}px)`,
         }}
+        performance={{ min: 0.2, max: 1, debounce: 500 }}
       >
         <ScrollCard
           beginTop={beginTop + inactivityH}
           endTop={beginTop + duration + inactivityH}
           {...rest}
         />
-        ;
       </Canvas>
     </div>
   );

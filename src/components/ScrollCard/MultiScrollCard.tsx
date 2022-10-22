@@ -41,7 +41,7 @@ export function MultiScrollCards(props: MultiScrollCardsProps) {
         duration={card.duration ?? 1200}
         imgSrc1={card.img1}
         imgSrc2={card.img2}
-        zoom={card.zoom ?? 10}
+        zoom={card.zoom}
         mesh={card.mesh}
       />
     );

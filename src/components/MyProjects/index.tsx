@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { useLocationChange } from "../../hooks/useLocationChange";
 import { MultiScrollCards } from "../ScrollCard/MultiScrollCard";
 
@@ -20,13 +20,19 @@ export function MyProjects(props: MyProjectsProps) {
             {
               img1: "3d/apsio-ssi.hdr",
               img2: "3d/apsio-ssi2.hdr",
-              zoom: 8,
               mesh: {
                 color: "#008990",
               },
+              duration: 3000,
+              inactivityH: 500,
             },
 
-            { img1: "3d/apsio_coin2.hdr", img2: "3d/apsio_coin.hdr", zoom: 8 },
+            {
+              img1: "3d/apsio_coin2.hdr",
+              img2: "3d/apsio_coin.hdr",
+              duration: 3000,
+              inactivityH: 500,
+            },
           ]}
           offset={93 + 98}
         />
