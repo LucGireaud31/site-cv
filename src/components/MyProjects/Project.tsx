@@ -9,6 +9,7 @@ import {
   ModalContent,
   ModalOverlay,
   Box,
+  HStack,
 } from "@chakra-ui/react";
 import { ReactNode, useMemo } from "react";
 import { GitHubLink } from "./GitHubLink";
@@ -18,12 +19,13 @@ interface ProjectProps {
   children: ReactNode;
   reversed?: boolean;
   hrefGit: string;
+  imgSrc: string;
 }
 
 export function Project(props: ProjectProps) {
-  const { title, children, reversed, hrefGit } = props;
+  const { title, children, reversed, hrefGit, imgSrc } = props;
 
-  const EmptyBox = useMemo(() => <Box h="300px" w="full" />, []);
+  const EmptyBox = useMemo(() => <Image src={imgSrc} rounded="xl" />, []);
 
   return (
     <>
@@ -36,7 +38,7 @@ export function Project(props: ProjectProps) {
           mx={20}
         >
           <Flex justifyContent="center">
-            <Heading size="lg" color="black">
+            <Heading size="lg" color="black" pt={1}>
               {title}
             </Heading>
             <GitHubLink href={hrefGit} />
