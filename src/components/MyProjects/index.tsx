@@ -25,7 +25,8 @@ export function MyProjects(props: MyProjectsProps) {
                 color: "#008990",
               },
             },
-            { img1: "3d/apsio_coin2.hdr", img2: "3d/apsio_coin.hdr", zoom: 8 },
+
+            // { img1: "3d/apsio_coin2.hdr", img2: "3d/apsio_coin.hdr", zoom: 8 },
           ]}
           offset={93 + 98}
         />

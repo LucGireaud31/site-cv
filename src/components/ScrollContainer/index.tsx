@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useRef, useState } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "./index.css";
@@ -12,22 +12,20 @@ interface ScrollContainerProps {
   enableScrollY?: boolean;
 }
 
-export const ScrollContainerContext = createContext({
-  isDisabled: true,
-  setIsDisabled: (d: boolean) => {},
-  scrollTo: ({
-    className,
-    pt,
-    top,
-    animationDuration,
-  }: {
+interface ScrollContainerContextProps {
+  isDisabled: boolean;
+  setIsDisabled(d: boolean): void;
+  scrollTo: (options: {
     className?: string;
     pt?: number;
     animationDuration?: number;
     top?: number;
-  }) => {},
-  scrollTop: 0,
-});
+  }) => void;
+  scrollTop: number;
+}
+export const ScrollContainerContext = createContext(
+  {} as ScrollContainerContextProps
+);
 
 export function ScrollContainer(props: ScrollContainerProps) {
   const {

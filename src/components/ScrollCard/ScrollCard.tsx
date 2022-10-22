@@ -6,11 +6,14 @@ import {
   MeshMatcapMaterial,
   Color,
   AmbientLight,
+  Object3D,
 } from "three";
 import { memo, RefObject, useEffect, useMemo } from "react";
 import { useThree } from "@react-three/fiber";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry";
+import gsap from "gsap";
+import { sleep } from "../../utils/promise";
 
 export interface ScrollCardProps {
   imgSrc1: string;
@@ -29,14 +32,15 @@ export interface ScrollCardProps {
     lightening?: number;
   };
   bgColor?: string;
-  containerRef?: RefObject<HTMLDivElement>;
 }
 
 const DEFAULT_MESH_W = 14;
 const DEFAULT_MESH_H = 7;
 const DEFAULT_MESH_D = 1;
 
-function ScrollCardMemo(props: ScrollCardProps) {
+let oldRotation = 0;
+
+export function ScrollCard(props: ScrollCardProps) {
   const {
     imgSrc1,
     imgSrc2,
@@ -49,6 +53,8 @@ function ScrollCardMemo(props: ScrollCardProps) {
     scrollTop,
   } = props;
   const { camera, scene, gl } = useThree();
+
+  // const { scrollContainerRef } = useScrollContainerContext();
 
   // Geometry rounded
   const geometry = useMemo(
@@ -115,10 +121,43 @@ function ScrollCardMemo(props: ScrollCardProps) {
     return light;
   }, [zoom]);
 
-  // new OrbitControls(camera, gl.domElement);
+  const currentMesh = scene.children.find(
+    (child: any) => child.geometry != null
+  );
 
+  if (currentMesh != undefined) {
+    let toRotation = currentMesh.rotation.x;
+
+    if (scrollTop <= beginTop) {
+      if (currentMesh?.rotation.x != 0) {
+        toRotation = 0;
+      }
+    } else if (scrollTop >= endTop) {
+      if (currentMesh?.rotation.x != maxRotation) {
+        toRotation = maxRotation;
+      }
+    } else {
+      const interval = endTop - beginTop;
+      const delta = scrollTop - beginTop;
+      const percent = delta / interval;
+      toRotation = percent * maxRotation;
+    }
+
+    const fromRotation = currentMesh.rotation.x;
+    console.log("animate", fromRotation, toRotation);
+
+    if (fromRotation != toRotation) {
+      oldRotation = fromRotation;
+      gsap.fromTo(
+        mesh.rotation,
+        { x: fromRotation },
+        { x: toRotation, duration: 4 }
+      );
+    }
+  }
+
+  // Constants
   useEffect(() => {
-    // Constants
     gl.outputEncoding = sRGBEncoding;
     gl.toneMappingExposure = meshProps?.lightening ?? 0.7;
     camera.position.z = zoom;
@@ -126,33 +165,7 @@ function ScrollCardMemo(props: ScrollCardProps) {
     if (bgColor) {
       scene.background = new Color(bgColor);
     }
-
-    function onScroll() {
-      console.log(scrollTop);
-      if (scrollTop <= beginTop) {
-        if (mesh.rotation.x != 0) {
-          mesh.rotation.x = 0;
-        }
-        return;
-      }
-
-      if (scrollTop >= endTop) {
-        if (mesh.rotation.x != maxRotation) {
-          mesh.rotation.x = maxRotation;
-        }
-        return;
-      }
-      const interval = endTop - beginTop;
-      const delta = scrollTop - beginTop;
-      const percent = delta / interval;
-
-      mesh.rotation.x = percent * maxRotation;
-    }
-
-    // Init mesh rotation
-    onScroll();
-    console.log("scroll");
-  }, [mesh, zoom, bgColor, scrollTop]);
+  }, []);
 
   // Scene
   scene.clear();
@@ -160,24 +173,5 @@ function ScrollCardMemo(props: ScrollCardProps) {
   scene.add(camera);
   scene.add(light);
 
-  return null;
+  return <></>;
 }
-
-export const ScrollCard = memo(ScrollCardMemo, (prev, next) => {
-  return (
-    prev.scrollTop == next.scrollTop &&
-    prev.imgSrc1 == next.imgSrc1 &&
-    prev.imgSrc2 == next.imgSrc2 &&
-    prev.beginTop == next.beginTop &&
-    prev.endTop == next.endTop &&
-    prev.zoom == next.zoom &&
-    prev.maxRotation == next.maxRotation &&
-    prev.mesh?.color == next.mesh?.color &&
-    prev.mesh?.w == next.mesh?.w &&
-    prev.mesh?.h == next.mesh?.h &&
-    prev.mesh?.d == next.mesh?.d &&
-    prev.mesh?.rounded == next.mesh?.rounded &&
-    prev.mesh?.lightening == next.mesh?.lightening &&
-    prev.bgColor == next.bgColor
-  );
-});
