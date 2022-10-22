@@ -7,13 +7,13 @@ import {
   Color,
   AmbientLight,
   Object3D,
+  BoxGeometry,
 } from "three";
 import { memo, RefObject, useEffect, useMemo } from "react";
 import { useThree } from "@react-three/fiber";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry";
 import gsap from "gsap";
-import { sleep } from "../../utils/promise";
 
 export interface ScrollCardProps {
   imgSrc1: string;
@@ -38,7 +38,7 @@ const DEFAULT_MESH_W = 14;
 const DEFAULT_MESH_H = 7;
 const DEFAULT_MESH_D = 1;
 
-let oldRotation = 0;
+let lastRotation = 0;
 
 export function ScrollCard(props: ScrollCardProps) {
   const {
@@ -59,12 +59,12 @@ export function ScrollCard(props: ScrollCardProps) {
   // Geometry rounded
   const geometry = useMemo(
     () =>
-      new RoundedBoxGeometry(
+      new BoxGeometry(
         meshProps?.w ?? DEFAULT_MESH_W,
         meshProps?.h ?? DEFAULT_MESH_H,
         meshProps?.d ?? DEFAULT_MESH_D,
-        undefined,
-        meshProps?.rounded ?? 0.3
+        undefined
+        // meshProps?.rounded ?? 0.3
       ),
     [meshProps]
   );
@@ -121,40 +121,27 @@ export function ScrollCard(props: ScrollCardProps) {
     return light;
   }, [zoom]);
 
-  const currentMesh = scene.children.find(
-    (child: any) => child.geometry != null
-  );
+  let toRotation = 0;
 
-  if (currentMesh != undefined) {
-    let toRotation = currentMesh.rotation.x;
-
-    if (scrollTop <= beginTop) {
-      if (currentMesh?.rotation.x != 0) {
-        toRotation = 0;
-      }
-    } else if (scrollTop >= endTop) {
-      if (currentMesh?.rotation.x != maxRotation) {
-        toRotation = maxRotation;
-      }
-    } else {
-      const interval = endTop - beginTop;
-      const delta = scrollTop - beginTop;
-      const percent = delta / interval;
-      toRotation = percent * maxRotation;
-    }
-
-    const fromRotation = currentMesh.rotation.x;
-    console.log("animate", fromRotation, toRotation);
-
-    if (fromRotation != toRotation) {
-      oldRotation = fromRotation;
-      gsap.fromTo(
-        mesh.rotation,
-        { x: fromRotation },
-        { x: toRotation, duration: 4 }
-      );
-    }
+  if (scrollTop >= endTop) {
+    toRotation = maxRotation;
+  } else if (scrollTop > beginTop) {
+    const interval = endTop - beginTop;
+    const delta = scrollTop - beginTop;
+    const percent = delta / interval;
+    toRotation = percent * maxRotation;
   }
+  mesh.rotation.x = toRotation;
+  // gsap.fromTo(
+  //   mesh.rotation,
+  //   {
+  //     x: scene.children.find((child: any) => child.geometry != null)?.rotation
+  //       .x,
+  //   },
+  //   { x: toRotation, duration: 0.4 }
+  // );
+
+  console.log(gl.info.render.triangles);
 
   // Constants
   useEffect(() => {
