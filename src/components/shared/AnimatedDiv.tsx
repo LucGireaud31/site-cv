@@ -10,6 +10,8 @@ interface AnimatedDivProps {
   onAnimationBegin?(): void;
   animationDuration?: number; // ms
   doAnimation?: boolean; // active or not animation
+  offsetBegin?: number; // offset before start animation
+  offsetEnd?: number; // offset before end animation
   style?: CSSProperties;
 }
 
@@ -22,26 +24,29 @@ export function AnimatedDiv(props: AnimatedDivProps) {
     doAnimation = true,
     onAnimationEnd,
     onAnimationBegin,
-    animationDuration: animationDurationProps,
+    offsetBegin = 0,
+    offsetEnd = 0,
+    animationDuration: animationDurationProps = 600,
     style,
   } = props;
 
-  const animationDuration = doAnimation ? animationDurationProps ?? 0 : 0;
+  const animationDuration = doAnimation ? animationDurationProps : 0;
 
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(isActive);
 
   useEffect(() => {
     (async () => {
       if (!isActive) {
-        await sleep(animationDuration);
+        await sleep(animationDuration + offsetEnd);
         onAnimationEnd?.();
         setDisplay(false);
         return;
       }
+      await sleep(offsetBegin);
       onAnimationBegin?.();
       setDisplay(true);
     })();
-  }, [isActive, animationDuration]);
+  }, [isActive, animationDuration, offsetBegin, offsetEnd]);
 
   return (
     <div

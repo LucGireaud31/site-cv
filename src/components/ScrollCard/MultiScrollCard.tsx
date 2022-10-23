@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { CanvasScrollCard } from "./CanvasScrollCard";
 
 interface MultiScrollCardsProps {
@@ -6,7 +7,6 @@ interface MultiScrollCardsProps {
     img2?: string;
     zoom?: number;
     duration?: number;
-    inactivityH?: number;
     mesh?: {
       color?: string;
       w?: number;
@@ -15,6 +15,7 @@ interface MultiScrollCardsProps {
       rounded?: number;
       lightening?: number;
     };
+    children: ReactNode;
   }[];
   offset?: number;
 }
@@ -25,14 +26,11 @@ export function MultiScrollCards(props: MultiScrollCardsProps) {
   const cardRender = cards.map((card, i) => {
     const previousCard = i == 0 ? card : cards[i - 1];
     const beginTop =
-      (previousCard.duration ?? 1200) +
-      (previousCard.inactivityH ?? 100) * 2 +
-      document.documentElement.clientHeight;
+      (previousCard.duration ?? 1200) + document.documentElement.clientHeight;
 
     return (
       <CanvasScrollCard
         key={i}
-        inactivityH={card.inactivityH ?? 100}
         beginTop={i == 0 ? 0 : beginTop}
         duration={card.duration ?? 1200}
         imgSrc1={card.img1}
@@ -40,6 +38,7 @@ export function MultiScrollCards(props: MultiScrollCardsProps) {
         zoom={card.zoom}
         mesh={card.mesh}
         offset={offset}
+        children={card.children}
       />
     );
   });

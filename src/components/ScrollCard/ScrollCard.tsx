@@ -8,6 +8,7 @@ import {
   AmbientLight,
   BoxGeometry,
   AnimationMixer,
+  WebGLRenderer,
 } from "three";
 import { useEffect, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -15,6 +16,7 @@ import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { createAnimationClip } from "./utils";
 import gsap from "gsap";
 import { roundNumber } from "../../utils/number";
+import { cardAnim } from "./constants";
 
 export interface ScrollCardProps {
   imgSrc1: string;
@@ -37,7 +39,7 @@ export interface ScrollCardProps {
 
 const DEFAULT_MESH_W = 1.4;
 const DEFAULT_MESH_H = 0.8;
-const DEFAULT_MESH_D = 0.1;
+const DEFAULT_MESH_D = 0.2;
 
 export function ScrollCard(props: ScrollCardProps) {
   const {
@@ -51,12 +53,7 @@ export function ScrollCard(props: ScrollCardProps) {
     bgColor,
     offset = 0,
   } = props;
-  const { camera, scene, gl } = useThree();
-
-  const scrollTop = Math.max(
-    (document.querySelector("#scroll-container")?.scrollTop ?? 0) - offset,
-    0
-  );
+  let { camera, scene, gl } = useThree();
 
   const geometry = useMemo(
     () =>
@@ -113,8 +110,7 @@ export function ScrollCard(props: ScrollCardProps) {
     const mesh = new Mesh(geometry, materials);
 
     const animationMixer = new AnimationMixer(mesh);
-    const animationAction = animationMixer.clipAction(createAnimationClip());
-    animationAction.play();
+    animationMixer.clipAction(cardAnim).play();
 
     return { mesh, animationMixer };
   }, [geometry, materials]);
@@ -128,37 +124,46 @@ export function ScrollCard(props: ScrollCardProps) {
     return light;
   }, [zoom]);
 
-  function getNewRotation() {
+  const scrollTop = Math.max(
+    (document.querySelector("#scroll-container")?.scrollTop ?? 0) - offset,
+    0
+  );
+
+  function getAnimationTime() {
     if (scrollTop >= endTop) {
-      return maxRotation;
+      return 1;
     } else if (scrollTop > beginTop) {
       const interval = endTop - beginTop;
       const delta = scrollTop - beginTop;
       const percent = delta / interval;
-      return percent * maxRotation;
+      return (percent * maxRotation) / maxRotation;
     }
     return 0;
   }
 
-  const toRotation = getNewRotation();
+  const timeAnimation = getAnimationTime();
 
   useFrame(async () => {
-    if (roundNumber(mesh.rotation.x, 2) == 0 && toRotation == 0) return;
+    if (
+      (roundNumber(mesh.rotation.x, 2) == 0 && timeAnimation == 0) ||
+      (roundNumber(mesh.rotation.x, 2) == 1 && timeAnimation == 1)
+    )
+      return;
 
     gsap.to(meshHelper.rotation, {
-      x: toRotation,
-      duration: 0.5,
+      x: timeAnimation,
+      duration: 0.6,
       onUpdate: () => {
-        animationMixer.setTime(meshHelper.rotation.x / Math.PI);
+        animationMixer.setTime(meshHelper.rotation.x);
       },
     });
   });
 
+  // gl.setPixelRatio(window.devicePixelRatio * 0.2);
   // Constants
   useEffect(() => {
     gl.outputEncoding = sRGBEncoding;
     gl.toneMappingExposure = meshProps?.lightening ?? 0.7;
-
     camera.position.z = zoom;
 
     if (bgColor) {

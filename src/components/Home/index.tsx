@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocationChange } from "../../hooks/useLocationChange";
 import { About } from "../About";
-import { Services } from "../Projects";
+import { Services } from "../Services";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
 import { Spinning } from "./Spinning";

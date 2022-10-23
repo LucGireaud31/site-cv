@@ -102,7 +102,8 @@ export function ScrollContainer(props: ScrollContainerProps) {
         id={id}
         style={{
           maxHeight: maxH,
-          overflowY: "auto",
+          overflowY: enableScrollY ? "auto" : "hidden",
+          overflowX: enableScrollX ? "auto" : "hidden",
         }}
         ref={(ref) => setContainerRef(ref)}
       >
