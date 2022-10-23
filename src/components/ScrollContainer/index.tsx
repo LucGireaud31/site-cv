@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { createContext, ReactNode, useRef, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "./index.css";
@@ -10,18 +10,20 @@ interface ScrollContainerProps {
   defaultAnimationDuration?: number; // ms
   enableScrollX?: boolean;
   enableScrollY?: boolean;
+  id?: string;
 }
 
 interface ScrollContainerContextProps {
   isDisabled: boolean;
   setIsDisabled(d: boolean): void;
   scrollTo: (options: {
-    className?: string;
+    selector?: string;
     pt?: number;
     animationDuration?: number;
     top?: number;
   }) => void;
   scrollTop: number;
+  scrollContainerRef: HTMLElement | null;
 }
 export const ScrollContainerContext = createContext(
   {} as ScrollContainerContextProps
@@ -34,6 +36,7 @@ export function ScrollContainer(props: ScrollContainerProps) {
     defaultAnimationDuration = 700,
     enableScrollX = false,
     enableScrollY = true,
+    id,
   } = props;
 
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
@@ -42,23 +45,23 @@ export function ScrollContainer(props: ScrollContainerProps) {
   const [isDisabled, setIsDisabled] = useState(false);
 
   function scrollTo({
-    className,
+    selector,
     pt,
     animationDuration,
     top,
   }: {
-    className?: string;
+    selector?: string;
     pt?: number;
     animationDuration?: number;
     top?: number;
   }) {
-    if (!className && top == undefined) return;
+    if (!selector && top == undefined) return;
 
     const duration = (animationDuration ?? defaultAnimationDuration) / 1000;
 
     const newY = Math.round(
-      className
-        ? document.querySelector("." + className)?.getClientRects()[0].y ?? 0
+      selector
+        ? (containerRef?.querySelector(selector) as HTMLElement).offsetTop ?? 0
         : top != undefined
         ? top
         : 0 -
@@ -74,6 +77,17 @@ export function ScrollContainer(props: ScrollContainerProps) {
     }
   }
 
+  useEffect(() => {
+    function onScroll(e: any) {
+      setCurrentScrollTop(e.target.scrollTop);
+    }
+    console.log("oui");
+    containerRef?.addEventListener("scroll", onScroll);
+    return () => {
+      containerRef?.removeEventListener("scroll", onScroll);
+    };
+  }, [containerRef]);
+
   return (
     <ScrollContainerContext.Provider
       value={{
@@ -81,9 +95,20 @@ export function ScrollContainer(props: ScrollContainerProps) {
         setIsDisabled: (d: boolean) => setIsDisabled(d),
         scrollTo,
         scrollTop: currentScrollTop,
+        scrollContainerRef: containerRef,
       }}
     >
-      <PerfectScrollbar
+      <div
+        id={id}
+        style={{
+          maxHeight: maxH,
+          overflowY: "auto",
+        }}
+        ref={(ref) => setContainerRef(ref)}
+      >
+        {children}
+      </div>
+      {/* <PerfectScrollbar
         style={{
           maxHeight: maxH,
         }}
@@ -97,7 +122,7 @@ export function ScrollContainer(props: ScrollContainerProps) {
         }}
       >
         {children}
-      </PerfectScrollbar>
+      </PerfectScrollbar> */}
     </ScrollContainerContext.Provider>
   );
 }

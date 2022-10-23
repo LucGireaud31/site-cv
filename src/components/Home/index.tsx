@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useLocationChange } from "../../hooks/useLocationChange";
 import { About } from "../About";
-import { Solutions } from "../Solutions";
+import { Services } from "../Projects";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
 import { Spinning } from "./Spinning";
@@ -54,7 +54,7 @@ export function Home(props: HomeProps) {
         </Flex>
       </Container>
       <Spinning />
-      <Solutions />
+      <Services />
       <About />
     </>
   );

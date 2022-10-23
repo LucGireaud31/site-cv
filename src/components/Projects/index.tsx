@@ -3,12 +3,12 @@ import { useReducer, useState } from "react";
 import { AnimatedScreen } from "./AnimatedScreen";
 import { ArrowContainer } from "./ArrowContainer";
 
-interface SolutionsProps {}
+interface ServicesProps {}
 
 const INDEX_MIN = 0;
 const INDEX_MAX = 1;
 
-export function Solutions(props: SolutionsProps) {
+export function Services(props: ServicesProps) {
   const {} = props;
 
   function reducer(state: number, action: "increment" | "decrement") {
@@ -25,13 +25,13 @@ export function Solutions(props: SolutionsProps) {
 
   return (
     <Box
-      id="solutions"
+      id="services"
       position="relative"
       pb="50px"
       overflow="hidden"
       bg="theme.500"
     >
-      <Flex id="solutions" h="100vh" zIndex={1}>
+      <Flex h="100vh" zIndex={1}>
         <AnimatedScreen
           isActive={index == 0}
           doAnimation={!isInitial}

@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useScrollContainerContext } from "../components/ScrollContainer/useScrollContainerContext";
 
-const NAMES = [["Accueil", "Solutions", "A propos"], ["Mes projets"]];
+const NAMES = [["Bienvenue", "Mes services", "A propos"], ["Mes projets"]];
 
 export function useHeaderName() {
   const { scrollTop } = useScrollContainerContext();

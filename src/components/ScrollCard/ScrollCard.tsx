@@ -7,14 +7,17 @@ import {
   Color,
   AmbientLight,
   BoxGeometry,
+  AnimationMixer,
 } from "three";
 import { useEffect, useMemo } from "react";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { createAnimationClip } from "./utils";
+import gsap from "gsap";
+import { roundNumber } from "../../utils/number";
 
 export interface ScrollCardProps {
   imgSrc1: string;
-  scrollTop: number;
   imgSrc2?: string;
   beginTop: number;
   endTop: number;
@@ -29,6 +32,7 @@ export interface ScrollCardProps {
     lightening?: number;
   };
   bgColor?: string;
+  offset?: number;
 }
 
 const DEFAULT_MESH_W = 1.4;
@@ -45,11 +49,15 @@ export function ScrollCard(props: ScrollCardProps) {
     maxRotation = Math.PI,
     zoom = 1,
     bgColor,
-    scrollTop,
+    offset = 0,
   } = props;
   const { camera, scene, gl } = useThree();
 
-  // Geometry rounded
+  const scrollTop = Math.max(
+    (document.querySelector("#scroll-container")?.scrollTop ?? 0) - offset,
+    0
+  );
+
   const geometry = useMemo(
     () =>
       new BoxGeometry(
@@ -101,10 +109,16 @@ export function ScrollCard(props: ScrollCardProps) {
   }, [meshProps?.color, textureFront, textureBack]);
 
   // Mesh
-  const mesh = useMemo(() => {
+  const { mesh, animationMixer } = useMemo(() => {
     const mesh = new Mesh(geometry, materials);
-    return mesh;
+
+    const animationMixer = new AnimationMixer(mesh);
+    const animationAction = animationMixer.clipAction(createAnimationClip());
+    animationAction.play();
+
+    return { mesh, animationMixer };
   }, [geometry, materials]);
+  const meshHelper = useMemo(() => new Mesh(), []);
 
   // Light
   const light = useMemo(() => {
@@ -114,18 +128,31 @@ export function ScrollCard(props: ScrollCardProps) {
     return light;
   }, [zoom]);
 
-  let toRotation = 0;
-
-  if (scrollTop >= endTop) {
-    toRotation = maxRotation;
-  } else if (scrollTop > beginTop) {
-    const interval = endTop - beginTop;
-    const delta = scrollTop - beginTop;
-    const percent = delta / interval;
-    toRotation = percent * maxRotation;
+  function getNewRotation() {
+    if (scrollTop >= endTop) {
+      return maxRotation;
+    } else if (scrollTop > beginTop) {
+      const interval = endTop - beginTop;
+      const delta = scrollTop - beginTop;
+      const percent = delta / interval;
+      return percent * maxRotation;
+    }
+    return 0;
   }
 
-  mesh.rotation.x = toRotation;
+  const toRotation = getNewRotation();
+
+  useFrame(async () => {
+    if (roundNumber(mesh.rotation.x, 2) == 0 && toRotation == 0) return;
+
+    gsap.to(meshHelper.rotation, {
+      x: toRotation,
+      duration: 0.5,
+      onUpdate: () => {
+        animationMixer.setTime(meshHelper.rotation.x / Math.PI);
+      },
+    });
+  });
 
   // Constants
   useEffect(() => {
@@ -137,13 +164,13 @@ export function ScrollCard(props: ScrollCardProps) {
     if (bgColor) {
       scene.background = new Color(bgColor);
     }
-  }, []);
 
-  // Scene
-  scene.clear();
-  scene.add(mesh);
-  scene.add(camera);
-  scene.add(light);
+    // Scene
+    scene.clear();
+    scene.add(mesh);
+    scene.add(camera);
+    scene.add(light);
+  }, []);
 
   return <></>;
 }

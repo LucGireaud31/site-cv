@@ -1,4 +1,3 @@
-import { useScrollContainerContext } from "../ScrollContainer/useScrollContainerContext";
 import { CanvasScrollCard } from "./CanvasScrollCard";
 
 interface MultiScrollCardsProps {
@@ -23,8 +22,6 @@ interface MultiScrollCardsProps {
 export function MultiScrollCards(props: MultiScrollCardsProps) {
   const { cards, offset = 0 } = props;
 
-  const { scrollTop } = useScrollContainerContext();
-
   const cardRender = cards.map((card, i) => {
     const previousCard = i == 0 ? card : cards[i - 1];
     const beginTop =
@@ -36,13 +33,13 @@ export function MultiScrollCards(props: MultiScrollCardsProps) {
       <CanvasScrollCard
         key={i}
         inactivityH={card.inactivityH ?? 100}
-        scrollTop={scrollTop <= offset ? 0 : scrollTop - offset}
         beginTop={i == 0 ? 0 : beginTop}
         duration={card.duration ?? 1200}
         imgSrc1={card.img1}
         imgSrc2={card.img2}
         zoom={card.zoom}
         mesh={card.mesh}
+        offset={offset}
       />
     );
   });

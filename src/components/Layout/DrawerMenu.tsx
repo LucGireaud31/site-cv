@@ -10,7 +10,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { List, X } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { sleep } from "../../utils/promise";
+import { useScrollContainerContext } from "../ScrollContainer/useScrollContainerContext";
 
 interface DrawerMenuProps {}
 
@@ -19,12 +21,30 @@ export function DrawerMenu(props: DrawerMenuProps) {
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  function LinkItem({ label }: { label: string }) {
+  const { scrollTo } = useScrollContainerContext();
+
+  const { pathname } = useLocation();
+
+  function LinkItem({
+    label,
+    href,
+    hash,
+    top,
+  }: {
+    label: string;
+    href: string;
+    hash?: string;
+    top?: number;
+  }) {
     return (
       <Link
-        to=""
-        onClick={() => {
+        to={{ pathname: href }}
+        onClick={async () => {
           onClose();
+          if (hash != undefined || top != undefined) {
+            await sleep(pathname != href ? 500 : 0);
+            scrollTo(top != undefined ? { top } : { selector: hash });
+          }
         }}
       >
         {label}
@@ -45,7 +65,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
         }}
         onClick={onOpen}
       />
-      <Drawer isOpen={isOpen} onClose={onClose} size="md">
+      <Drawer isOpen={isOpen} onClose={onClose} size="md" autoFocus={false}>
         <DrawerOverlay />
         <DrawerContent px={20} pb={10} bg="theme.500" color="white">
           <DrawerBody mt={20} fontSize="lg" position="relative">
@@ -66,11 +86,11 @@ export function DrawerMenu(props: DrawerMenuProps) {
               }}
             />
             <VStack align="flex-start" spacing={5}>
-              <LinkItem label="Accueil" />
-              <LinkItem label="Mes services" />
-              <LinkItem label="Mes projets" />
-              <LinkItem label="A propos de moi" />
-              <LinkItem label="Contact" />
+              <LinkItem label="Accueil" href="/" top={0} />
+              <LinkItem label="Mes services" href="/" hash="#services" />
+              <LinkItem label="A propos de moi" href="/" hash="#about" />
+              <LinkItem label="Mes projets" href="/projects" />
+              <LinkItem label="Contact" href="/contact" />
             </VStack>
           </DrawerBody>
 

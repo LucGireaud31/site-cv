@@ -20,9 +20,10 @@ export function About(props: AboutProps) {
   return (
     <Container
       maxW="8xl"
-      h="calc(100vh - 98px)"
+      h="calc(100vh - 80px)"
       display="flex"
       alignItems="center"
+      id="about"
     >
       <HStack align="center" justifyContent="center" spacing="150px">
         <Frame />

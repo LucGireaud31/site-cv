@@ -7,9 +7,8 @@ import { Header } from "./Header";
 export function Layout() {
   return (
     <Box color="theme.500" id="header" position="relative" bg="background">
-      <ScrollContainer maxH="100vh">
+      <ScrollContainer maxH="100vh" id="scroll-container">
         <Header />
-
         <Box zIndex={100}>
           <Outlet />
         </Box>
