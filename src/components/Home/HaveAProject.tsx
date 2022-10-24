@@ -1,13 +1,11 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Link, Text } from "@chakra-ui/react";
 
 export function HaveAProject() {
   return (
     <Flex mt={150} border="3px solid" borderColor="theme.500" w="fit-content">
-      <Box bg="theme.500" w={52} color="white" fontWeight="bold">
-        <Text align="center" h="full" pt={4}>
-          Vous avez un projet ?
-        </Text>
-      </Box>
+      <Center bg="theme.500" w={52} fontWeight="bold" color="white">
+        Vous avez un projet ?
+      </Center>
       <Link
         href="mailto:luc.gireaud@gmail.com"
         color="theme.500"

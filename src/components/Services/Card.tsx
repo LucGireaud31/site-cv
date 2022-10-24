@@ -49,7 +49,7 @@ export function Card(props: CardProps) {
           rounded="lg"
           transition="all 0.5s"
         />
-        <Text w="280px">
+        <Text w="280px" color="white">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
           aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit

@@ -12,7 +12,6 @@ export function Highlight(props: HighlightProps) {
   return (
     <Text
       as="span"
-      ml={1}
       {...(type == "color" ? { color: "theme.500" } : { fontWeight: "bold" })}
     >
       {children}

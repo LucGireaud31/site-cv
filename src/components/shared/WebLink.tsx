@@ -25,7 +25,7 @@ export function WebLink(props: WebLinkProps) {
       _active={{ bg: "theme.500" }}
     >
       <Image src={icon} w="50px" rounded="full" />
-      <Text> {title}</Text>
+      <Text color="inherit"> {title}</Text>
     </HStack>
   );
 }

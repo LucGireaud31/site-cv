@@ -95,7 +95,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
           </DrawerBody>
 
           <DrawerFooter>
-            <Text>© 2022 Luc Gireaud</Text>
+            <Text color="white">© 2022 Luc Gireaud</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
