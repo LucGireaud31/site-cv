@@ -58,17 +58,17 @@ export function DrawerMenu(props: DrawerMenuProps) {
       <Box
         as={List}
         size={32}
-        color="theme.500"
+        color="theme.100"
         cursor="pointer"
         transition="color .2s"
         _hover={{
-          color: "theme.400",
+          color: "theme.200",
         }}
         onClick={onOpen}
       />
       <Drawer isOpen={isOpen} onClose={onClose} size="md" autoFocus={false}>
         <DrawerOverlay />
-        <DrawerContent px={20} pb={10} bg="theme.500" color="white">
+        <DrawerContent px={20} pb={10} bg="theme.400" color="white">
           <DrawerBody mt={20} fontSize="lg" position="relative">
             <Box
               as={X}
@@ -103,7 +103,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
           </DrawerBody>
 
           <DrawerFooter>
-            <Text color="white">© 2022 Luc Gireaud</Text>
+            <Text color="white">© {new Date().getFullYear()} Luc Gireaud</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

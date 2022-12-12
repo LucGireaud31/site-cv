@@ -16,13 +16,19 @@ interface AnimatedScreenProps {
   onAnimationEnd(): void;
   onAnimationBegin(): void;
   doAnimation: boolean;
-  bg: string;
   title: string;
+  theme: string;
 }
 
 export function AnimatedScreen(props: AnimatedScreenProps) {
-  const { isActive, onAnimationEnd, onAnimationBegin, bg, title, doAnimation } =
-    props;
+  const {
+    isActive,
+    onAnimationEnd,
+    onAnimationBegin,
+    theme,
+    title,
+    doAnimation,
+  } = props;
 
   const [display, setDisplay] = useState(isActive);
 
@@ -34,8 +40,7 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         }DownRight`}
         position="absolute"
         w="full"
-        h="full"
-        bg={bg}
+        h="100vh"
         display={display ? "block" : "none"}
         style={{
           animationDuration: doAnimation ? "1s" : "0s",
@@ -62,9 +67,11 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
         }}
       >
         <Flex zIndex={1} h="fit-content">
-          <Center flexDir="column" textAlign="center" color="black" zIndex={1}>
-            <Heading fontSize="7xl">{title}</Heading>
-            <Text mt={8} px="160px" fontSize="lg">
+          <Center flexDir="column" textAlign="center" zIndex={1}>
+            <Heading fontSize="7xl" color={theme}>
+              {title}
+            </Heading>
+            <Text mt={8} px="160px" color="white" fontSize="lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
               aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
@@ -75,17 +82,26 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
               href="https://fr.reactjs.org/docs/getting-started.html"
               target="_blank"
               mt={12}
-              colorScheme="blackAlpha"
+              bg={theme}
               size="lg"
+              _hover={{
+                bg: "theme",
+              }}
             >
               Découvrir React
             </Button>
           </Center>
           <Center>
             <HStack mr={10} spacing={4}>
-              <Card isActive={isActive} index={0} doAnimation={doAnimation} />
-              <Card isActive={isActive} index={1} doAnimation={doAnimation} />
-              <Card isActive={isActive} index={2} doAnimation={doAnimation} />
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Card
+                  key={i}
+                  isActive={isActive}
+                  index={i}
+                  doAnimation={doAnimation}
+                  theme={theme}
+                />
+              ))}
             </HStack>
           </Center>
         </Flex>

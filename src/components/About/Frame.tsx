@@ -9,7 +9,7 @@ export function Frame() {
       h="500px"
       position="relative"
       border="8px solid"
-      borderColor="theme.500"
+      borderColor="theme.200"
     >
       <Box
         position="absolute"
@@ -17,14 +17,14 @@ export function Frame() {
         left={`${SPACE}px`}
         zIndex={2}
         border="8px solid"
-        borderColor="background"
+        borderColor="theme.400"
       >
         <Box
           w="400px"
           h="500px"
-          bg="background"
+          bg="theme.600"
           border="8px solid"
-          borderColor="theme.500"
+          borderColor="theme.200"
           position="relative"
           overflow="hidden"
           zIndex={1}

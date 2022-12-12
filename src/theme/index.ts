@@ -7,7 +7,6 @@ export const theme = extendTheme({
         Button: {
             defaultProps: {
                 colorScheme: "theme",
-                rounded:"xs"
             },
             variants: {
                 outline: {

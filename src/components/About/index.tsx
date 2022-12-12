@@ -29,10 +29,10 @@ export function About(props: AboutProps) {
         <Frame />
         <VStack w="40%" align="left" spacing={10}>
           <Box>
-            <Heading>A propos de moi</Heading>
-            <Box w="150px" h="8px" bg="theme.500" rounded="sm" mt={2} />
+            <Heading color="theme.100">A propos de moi</Heading>
+            <Box w="150px" h="8px" bg="theme.400" rounded="sm" mt={2} />
           </Box>
-          <Text>
+          <Text color="white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
             condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
             aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
@@ -45,12 +45,15 @@ export function About(props: AboutProps) {
             congue nisi tortor sit amet quam.
           </Text>
           <HStack>
-            <Button>Me contacter</Button>
+            <Button bg="theme.400" _hover={{ bg: "theme.500" }}>
+              Me contacter
+            </Button>
             <Button
               as="a"
               variant="outline"
               href="/documents/cv.pdf"
               target="_blank"
+              color="gray.300"
             >
               Télécharger mon CV
             </Button>

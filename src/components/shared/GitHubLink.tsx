@@ -17,7 +17,7 @@ export function GitHubLink(props: GitHubLinkProps) {
           ml={2}
           cursor="pointer"
         />
-        <Text fontSize={9} ml={1} color="black">
+        <Text fontSize={9} ml={1} color="white">
           Voir le code source
         </Text>
       </Flex>

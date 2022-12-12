@@ -15,14 +15,14 @@ export function WebLink(props: WebLinkProps) {
       href={href}
       target="_blank"
       border="2px"
-      borderColor="theme.500"
+      borderColor="theme.200"
       rounded="full"
       pr={3}
-      color="theme.500"
+      color="white"
       _hover={{ bg: "theme.400", color: "white" }}
       cursor="pointer"
       transition="all .2s"
-      _active={{ bg: "theme.500" }}
+      _active={{ bg: "theme.300" }}
     >
       <Image src={icon} w="50px" rounded="full" />
       <Text color="inherit"> {title}</Text>

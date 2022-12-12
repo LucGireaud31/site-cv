@@ -1,14 +1,17 @@
 import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { colors } from "../../theme/colors";
+import { Highlight } from "../shared/Highlight";
 
 interface CardProps {
   isActive: boolean;
   index: number;
   doAnimation: boolean;
+  theme: string;
 }
 
 export function Card(props: CardProps) {
-  const { isActive, index, doAnimation } = props;
+  const { isActive, index, doAnimation, theme } = props;
 
   const [isHover, setIsHover] = useState(false);
 
@@ -33,14 +36,19 @@ export function Card(props: CardProps) {
     >
       <VStack
         h="full"
-        bg="theme.500"
         rounded="md"
-        color="white"
         p={6}
         textAlign="center"
         spacing={8}
+        boxShadow="xs"
+        bg="theme.500"
       >
-        <Heading mt={2} size={isHover ? "xl" : "lg"} transition="all 0.5s">
+        <Heading
+          mt={2}
+          size={isHover ? "xl" : "lg"}
+          transition="all 0.5s"
+          color={theme}
+        >
           Un super titre
         </Heading>
         <Image
@@ -49,11 +57,14 @@ export function Card(props: CardProps) {
           rounded="lg"
           transition="all 0.5s"
         />
-        <Text w="280px" color="white">
+        <Text w="280px" fontSize={16} color="white">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-          condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
-          aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
-          amet quam. Ut lobortis augue consequat lectus tincidunt cursus.
+          condimentum odio{" "}
+          <Highlight color={theme}>in purus volutpat</Highlight> accumsan. Ut
+          suscipit, urna nec aliquam eleifend, enim orci auctor nibh, at congue
+          nisi tortor sit amet quam.{" "}
+          <Highlight color={theme}>Ut lobortis</Highlight> augue consequat
+          lectus tincidunt cursus.
         </Text>
       </VStack>
     </Box>

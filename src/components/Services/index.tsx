@@ -24,19 +24,13 @@ export function Services(props: ServicesProps) {
   const [isChanging, setIsChanging] = useState(false);
 
   return (
-    <Box
-      id="services"
-      position="relative"
-      pb="50px"
-      overflow="hidden"
-      bg="theme.500"
-    >
+    <Box id="services" position="relative" pb="50px" overflow="hidden">
       <Flex h="100vh" zIndex={1}>
         <AnimatedScreen
           isActive={index == 0}
           doAnimation={!isInitial}
-          bg="orange"
           title="Sites Webs"
+          theme="orange"
           onAnimationBegin={() => {
             setIsChanging(true);
           }}
@@ -47,8 +41,8 @@ export function Services(props: ServicesProps) {
         <AnimatedScreen
           isActive={index == 1}
           doAnimation={!isInitial}
-          bg="yellow"
           title="Applications mobiles"
+          theme="yellow"
           onAnimationBegin={() => {
             setIsChanging(true);
           }}

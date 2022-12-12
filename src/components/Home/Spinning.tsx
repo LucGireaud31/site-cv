@@ -15,7 +15,7 @@ export function Spinning(props: SpinningProps) {
   const {} = props;
 
   return (
-    <Flex h="80px" bg="theme.500">
+    <Flex h="80px" bg="theme.400">
       <HStack spacing={20} w="fit-content" mx="auto">
         {keyWords.map((word, i) => (
           <Heading key={i} color="white" size="md">

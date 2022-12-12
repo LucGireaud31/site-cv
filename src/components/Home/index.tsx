@@ -30,19 +30,19 @@ export function Home(props: HomeProps) {
         h="calc(100vh - 98px - 50px - 80px)"
       >
         <Flex h="full" alignItems="center" pb="80px">
-          <Center w="50%" color="black" textAlign="left">
+          <Center w="50%" color="white" textAlign="left">
             <Box>
               <Heading>Bonjour à tous 👋</Heading>
               <HStack mt={4}>
                 <Heading size="lg">Je m'appelle</Heading>
-                <Heading color="theme.500" size="lg">
+                <Heading color="theme.100" size="lg">
                   Luc Gireaud
                 </Heading>
               </HStack>
-              <Text mt={9} fontSize="xl" color="gray.600">
+              <Text mt={9} fontSize="xl" color="gray.400">
                 Je suis développeur web et mobile.
               </Text>
-              <Text mt={2} fontSize="xl" color="gray.600">
+              <Text mt={2} fontSize="xl" color="gray.400">
                 Je réalise vos projets dans la bonne humeur.
               </Text>
               <HaveAProject />

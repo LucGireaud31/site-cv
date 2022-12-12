@@ -46,15 +46,18 @@ function Arrow({
     <Box
       as={direction == "left" ? ArrowLeft : ArrowRight}
       bg="white"
-      color="theme.500"
+      color="theme.400"
       boxSize="60px"
       rounded="full"
       p={3}
       cursor="pointer"
       _hover={{
-        bg: "gray.200",
+        bg: "gray.400",
       }}
-      transition="all .5s"
+      _active={{
+        bg: "gray.500",
+      }}
+      transition="all .2s"
       onClick={() => !isDisabled && onClick()}
     />
   );

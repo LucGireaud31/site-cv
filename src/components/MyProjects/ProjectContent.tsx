@@ -25,7 +25,7 @@ export function ProjectContent(props: ProjectContentProps) {
       >
         <VStack textAlign="center" mx={120} pb="98px">
           <Flex justifyContent="center">
-            <Heading size="lg" color="black" pt={1}>
+            <Heading size="lg" color="theme.100" pt={1}>
               {title}
             </Heading>
             {gitLink && <GitHubLink href={gitLink} />}

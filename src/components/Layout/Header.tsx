@@ -22,11 +22,12 @@ export function Header(props: HeaderProps) {
       bg="backgroundLight"
       w="calc(100vw + 100px)"
       ml="-50px"
+      color="theme.100"
       boxShadow={`0px 10px 10px ${colors.backgroundLight}`}
     >
       <Flex alignItems="center" justifyContent="space-between" px="100px">
         <Box w="300px">
-          <Image src="/images/logo.png" w={50} h={50} />
+          <Image src="/images/logo.png" w="60px" h="50px" />
         </Box>
         <Heading size="md">{header}</Heading>
         <Flex justifyContent="space-between" w="300px">
