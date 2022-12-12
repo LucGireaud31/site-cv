@@ -8,9 +8,10 @@ import {
   Text,
   useDisclosure,
   VStack,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { List, X } from "phosphor-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { sleep } from "../../utils/promise";
 import { useScrollContainerContext } from "../ScrollContainer/useScrollContainerContext";
 
@@ -37,7 +38,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
     top?: number;
   }) {
     return (
-      <Link
+      <RouterLink
         to={{ pathname: href }}
         onClick={async () => {
           onClose();
@@ -48,7 +49,7 @@ export function DrawerMenu(props: DrawerMenuProps) {
         }}
       >
         {label}
-      </Link>
+      </RouterLink>
     );
   }
 
@@ -90,7 +91,14 @@ export function DrawerMenu(props: DrawerMenuProps) {
               <LinkItem label="Mes services" href="/" hash="#services" />
               <LinkItem label="A propos de moi" href="/" hash="#about" />
               <LinkItem label="Mes projets" href="/projects" />
-              <LinkItem label="Contact" href="/contact" />
+              <ChakraLink
+                href="mailto:luc.gireaud@gmail.com"
+                _hover={{
+                  textDecor: "none",
+                }}
+              >
+                Contact
+              </ChakraLink>
             </VStack>
           </DrawerBody>
 
