@@ -6,8 +6,9 @@ const keyWords = [
   "Applications mobile",
   "Sites web",
   "Freelance",
+  "Toulouse",
   "Développeur front & back",
-  "Projets 100% personnalisés",
+  "Projets sur mesures",
   "Node",
 ];
 

@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { AnimatedDiv } from "../shared/AnimatedDiv";
+import { Highlight } from "../shared/Highlight";
 import { Card } from "./Card";
 
 interface AnimatedScreenProps {
@@ -16,8 +17,9 @@ interface AnimatedScreenProps {
   onAnimationEnd(): void;
   onAnimationBegin(): void;
   doAnimation: boolean;
-  title: string;
   theme: string;
+  themeLight: string;
+  type: "web" | "mobile";
 }
 
 export function AnimatedScreen(props: AnimatedScreenProps) {
@@ -26,11 +28,14 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
     onAnimationEnd,
     onAnimationBegin,
     theme,
-    title,
+    themeLight,
     doAnimation,
+    type,
   } = props;
 
   const [display, setDisplay] = useState(isActive);
+
+  const title = type == "web" ? "Sites Web" : "Applications mobiles";
 
   return (
     <>
@@ -39,8 +44,6 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
           isActive ? "In" : "Out"
         }DownRight`}
         position="absolute"
-        w="full"
-        h="100vh"
         display={display ? "block" : "none"}
         style={{
           animationDuration: doAnimation ? "1s" : "0s",
@@ -72,24 +75,72 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
               {title}
             </Heading>
             <Text mt={8} px="160px" color="white" fontSize="lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
-              aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
-              amet quam.
+              {type == "web" ? (
+                <>
+                  Je réalise des sites web en utilisant{" "}
+                  <Highlight color={theme}>React</Highlight>, technologie
+                  développée par Facebook qui permet d'avoir des interfaces
+                  utilisateurs interactives. <br />
+                  Ce qui fait majoritairement{" "}
+                  <Highlight color={theme}>
+                    sa force est la façon dont il charge les pages
+                  </Highlight>{" "}
+                  car il ne rerend pas toutes les données mais seulement celles
+                  qui changent.
+                </>
+              ) : (
+                <>
+                  Je propose la création d'applications mobiles en{" "}
+                  <Highlight color={theme}>React Native avec Expo </Highlight>.
+                  <br />
+                  Ces technologies permettent de développer rapidement une seule
+                  application mobile qui sera compatible à la fois pour{" "}
+                  <Highlight color={theme}> Android et iOS</Highlight>.
+                </>
+              )}
             </Text>
-            <Button
-              as="a"
-              href="https://fr.reactjs.org/docs/getting-started.html"
-              target="_blank"
-              mt={12}
-              bg={theme}
-              size="lg"
-              _hover={{
-                bg: "theme",
-              }}
-            >
-              Découvrir React
-            </Button>
+            {type == "web" ? (
+              <Button
+                as="a"
+                href="https://fr.reactjs.org"
+                target="_blank"
+                mt={12}
+                bg={theme}
+                size="lg"
+                _hover={{
+                  bg: themeLight,
+                }}
+              >
+                Découvrir React
+              </Button>
+            ) : (
+              <HStack mt={12}>
+                <Button
+                  as="a"
+                  href="https://reactnative.dev"
+                  target="_blank"
+                  bg={theme}
+                  size="lg"
+                  _hover={{
+                    bg: themeLight,
+                  }}
+                >
+                  Découvrir React Native
+                </Button>
+                <Button
+                  as="a"
+                  href="https://expo.dev/"
+                  target="_blank"
+                  bg="theme.300"
+                  size="lg"
+                  _hover={{
+                    bg: "theme.400",
+                  }}
+                >
+                  Découvrir Expo
+                </Button>
+              </HStack>
+            )}
           </Center>
           <Center>
             <HStack mr={10} spacing={4}>
@@ -100,6 +151,7 @@ export function AnimatedScreen(props: AnimatedScreenProps) {
                   index={i}
                   doAnimation={doAnimation}
                   theme={theme}
+                  type={type}
                 />
               ))}
             </HStack>

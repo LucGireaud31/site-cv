@@ -12,7 +12,7 @@ export function ArrowContainer(props: ArrowContainerProps) {
   return (
     <HStack
       position="absolute"
-      bottom="70px"
+      bottom="150px"
       left="0"
       w="full"
       justifyContent="center"

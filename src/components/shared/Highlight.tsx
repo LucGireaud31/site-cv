@@ -3,14 +3,19 @@ import { ReactNode } from "react";
 
 interface HighlightProps {
   children: ReactNode;
-  color?: string;
+  color?: string | true;
 }
 
 export function Highlight(props: HighlightProps) {
   const { children, color } = props;
 
   return (
-    <Text as="span" {...(color ? { color } : { fontWeight: "bold" })}>
+    <Text
+      as="span"
+      {...(color != undefined
+        ? { color: color == true ? "theme.100" : color }
+        : { fontWeight: "bold" })}
+    >
       {children}
     </Text>
   );

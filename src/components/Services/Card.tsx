@@ -1,19 +1,98 @@
-import { Box, Heading, Image, Text, VStack } from "@chakra-ui/react";
-import { useState } from "react";
-import { colors } from "../../theme/colors";
+import {
+  Box,
+  Center,
+  Heading,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { Gauge } from "phosphor-react";
+import { ReactNode, useState } from "react";
 import { Highlight } from "../shared/Highlight";
+import { CompanyBulletPoint } from "./CompanyBulletPoint";
 
 interface CardProps {
   isActive: boolean;
   index: number;
   doAnimation: boolean;
   theme: string;
+  type: "web" | "mobile";
 }
 
 export function Card(props: CardProps) {
-  const { isActive, index, doAnimation, theme } = props;
+  const { isActive, index, doAnimation, theme, type } = props;
 
   const [isHover, setIsHover] = useState(false);
+
+  const data: { [key: string]: any } = {
+    web: {
+      title: ["Rapide", "Des extensions", "Fiable"],
+
+      content: [
+        <>
+          Ne pas recharger toutes les données à chaque changement de page permet
+          d'augmenter l'expérience de l'utilisateur grâce à{" "}
+          <Highlight color={theme}>
+            une <Highlight>fluidité</Highlight> incroyable
+          </Highlight>
+          .
+        </>,
+
+        <>
+          Permet d'ajouter des{" "}
+          <Highlight color={theme}>
+            fonctionnalités <Highlight>gratuites</Highlight> et{" "}
+            <Highlight>complexes</Highlight>
+          </Highlight>{" "}
+          rapidement. <br />
+          <br />
+          Ainsi, il est possible d'avoir un site web complètement{" "}
+          <Highlight color={theme}>personnalisable</Highlight>.
+        </>,
+        <>
+          React est utilisé par les plus grands, tels que Facebook bien sûr,
+          mais aussi : <br />
+          <CompanyBulletPoint label="Airbnb" fileName="airbnb.png" />
+          <CompanyBulletPoint label="Instagram" fileName="instagram.webp" />
+          <CompanyBulletPoint label="Netflix" fileName="netflix.png" />
+          <CompanyBulletPoint label="Paypal" fileName="paypal.webp" />
+        </>,
+      ],
+      icon: [Gauge, "", ""],
+    },
+    mobile: {
+      title: ["Multi-plateforme", "Similaire à React", "Fiable"],
+      content: [
+        <>
+          React native permet de{" "}
+          <Highlight color={theme}>
+            gagner énormément de <Highlight>temps</Highlight>
+          </Highlight>
+          . Effectivement, elle est compatible avec Android et iOS.
+          <br /> <br />
+          Il est aussi plus{" "}
+          <Highlight color={theme}>facile et rapide de maintenir</Highlight> une
+          seule application que deux.
+        </>,
+        <>
+          Cela me permet de{" "}
+          <Highlight color={theme}>maitriser une seule technologie</Highlight>{" "}
+          tout en proposant plusieurs produits (web et mobile). <br />
+          <br />
+          Pratique quand on débute 😉.
+        </>,
+        <>
+          La technologie que je vous propose est utilisée par les plus grands :
+          <CompanyBulletPoint label="Facebook" fileName="facebook.png" />
+          <CompanyBulletPoint label="Uber eats" fileName="uber-eats.png" />
+          <CompanyBulletPoint label="Playstation" fileName="playstation.png" />
+          <CompanyBulletPoint label="Xbox" fileName="xbox.png" />
+        </>,
+      ],
+      icon: ["", "", ""],
+    },
+  };
 
   return (
     <Box
@@ -24,7 +103,7 @@ export function Card(props: CardProps) {
         animationDuration: doAnimation ? "700ms" : "0s",
       }}
       w="380px"
-      h="60vh"
+      h="450px"
       p={7}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
@@ -34,39 +113,31 @@ export function Card(props: CardProps) {
       transition="all 0.5s"
       zIndex={1}
     >
-      <VStack
+      <Box
         h="full"
         rounded="md"
         p={6}
         textAlign="center"
-        spacing={8}
         boxShadow="xs"
         bg="theme.500"
+        pb={2}
       >
         <Heading
           mt={2}
           size={isHover ? "xl" : "lg"}
           transition="all 0.5s"
           color={theme}
+          w="fit-content"
+          mx="auto"
         >
-          Un super titre
+          {data[type].title[index]}
         </Heading>
-        <Image
-          src="/images/test.webp"
-          h={isHover ? "150px" : "100px"}
-          rounded="lg"
-          transition="all 0.5s"
-        />
-        <Text w="280px" fontSize={16} color="white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-          condimentum odio{" "}
-          <Highlight color={theme}>in purus volutpat</Highlight> accumsan. Ut
-          suscipit, urna nec aliquam eleifend, enim orci auctor nibh, at congue
-          nisi tortor sit amet quam.{" "}
-          <Highlight color={theme}>Ut lobortis</Highlight> augue consequat
-          lectus tincidunt cursus.
-        </Text>
-      </VStack>
+        <Center h="full" pb={12}>
+          <Text fontSize={16} color="white" w="260px">
+            {data[type].content[index]}
+          </Text>
+        </Center>
+      </Box>
     </Box>
   );
 }

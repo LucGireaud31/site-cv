@@ -10,6 +10,7 @@ import {
 import { useLocationChange } from "../../hooks/useLocationChange";
 import { About } from "../About";
 import { Services } from "../Services";
+import { Highlight } from "../shared/Highlight";
 import { HaveAProject } from "./HaveAProject";
 import { ProfilPicture } from "./ProfilPicture";
 import { Spinning } from "./Spinning";
@@ -40,10 +41,15 @@ export function Home(props: HomeProps) {
                 </Heading>
               </HStack>
               <Text mt={9} fontSize="xl" color="gray.400">
-                Je suis développeur web et mobile.
+                Je suis développeur{" "}
+                <Highlight color="">Web et mobile</Highlight>
               </Text>
-              <Text mt={2} fontSize="xl" color="gray.400">
-                Je réalise vos projets dans la bonne humeur.
+              <Text mt={5} fontSize="xl" color="gray.400">
+                Je réalise vos projets <Highlight color>sur mesure</Highlight>{" "}
+                pour coller
+                <br />
+                au maximum à vos besoins tout en restant <br />
+                dans la <Highlight color>bonne humeur</Highlight>.
               </Text>
               <HaveAProject />
             </Box>

@@ -29,26 +29,28 @@ export function Services(props: ServicesProps) {
         <AnimatedScreen
           isActive={index == 0}
           doAnimation={!isInitial}
-          title="Sites Webs"
           theme="orange"
+          themeLight="orangeBall"
           onAnimationBegin={() => {
             setIsChanging(true);
           }}
           onAnimationEnd={() => {
             setIsChanging(false);
           }}
+          type="web"
         />
         <AnimatedScreen
           isActive={index == 1}
           doAnimation={!isInitial}
-          title="Applications mobiles"
           theme="yellow"
+          themeLight="yellowBall"
           onAnimationBegin={() => {
             setIsChanging(true);
           }}
           onAnimationEnd={() => {
             setIsChanging(false);
           }}
+          type="mobile"
         />
 
         <ArrowContainer
