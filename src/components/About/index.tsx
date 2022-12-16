@@ -33,16 +33,17 @@ export function About(props: AboutProps) {
             <Box w="150px" h="8px" bg="theme.400" rounded="sm" mt={2} />
           </Box>
           <Text color="white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            condimentum odio in purus volutpat accumsan. Ut suscipit, urna nec
-            aliquam eleifend, enim orci auctor nibh, at congue nisi tortor sit
-            amet quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Fusce condimentum odio in purus volutpat accumsan. Ut suscipit, urna
-            nec aliquam eleifend, enim orci auctor nibh, at congue nisi tortor
-            sit amet quam. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Fusce condimentum odio in purus volutpat accumsan. Ut
-            suscipit, urna nec aliquam eleifend, enim orci auctor nibh, at
-            congue nisi tortor sit amet quam.
+            Je passe la majorité de mon temps à découvrir et produire, j'adore
+            créer, que ce soit pour moi ou les autres.
+            <br />
+            <br />
+            J'ai obtenu en 2022 une licence APSIO (Analyste Programmeur de
+            Systèmes Informatiques Ouverts) à Blagnac.
+            <br />
+            <br />2 années en tant que développeur Web et mobile chez
+            Nomattitude ainsi que de nombreux projets personnels me permettent
+            d'avoir le bagage et l'expérience nécessaire pour créer une
+            application capable de défier la concurrence à prix raisonnable.
           </Text>
           <HStack>
             <Button bg="theme.400" _hover={{ bg: "theme.500" }}>
